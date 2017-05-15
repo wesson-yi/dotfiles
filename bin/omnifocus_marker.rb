@@ -29,8 +29,12 @@ class OmniFocusMarker
 
     def set_context(target, context)
       target = target.thing unless target.is_a? AS_SafeObject
-      context = context.thing unless context.is_a? AS_SafeObject
-      puts "-- Change Context: '#{target.name.get}',  from '#{target.context.get == :missing_value ? 'None' : target.context.name.get}' to '#{context.name.get}'"
+      if context.nil?
+        context = :missing_value
+      else
+        context = context.thing unless context.is_a? AS_SafeObject
+        puts "-- Change Context: '#{target.name.get}',  from '#{target.context.get == :missing_value ? 'None' : target.context.name.get}' to '#{context.name.get}'"
+      end
       target.context.set context
     end
 
