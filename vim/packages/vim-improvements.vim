@@ -35,7 +35,7 @@ Plug 'goldfeld/ctrlr.vim'
 Plug 'majutsushi/tagbar'
 "execute whole/part of editing file, map: <F5>
 Plug 'thinca/vim-quickrun'
-Plug 'Shougo/vimproc.vim'
+"Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'benmills/vimux'
 Plug 'Yggdroot/indentLine'
