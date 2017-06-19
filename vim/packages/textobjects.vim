@@ -15,4 +15,6 @@ Plug 'machakann/vim-textobj-delimited'
 "Plug "lucapette/vim-textobj-underscore"
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'thinca/vim-textobj-function-javascript'
-Plug 'vim-scripts/argtextobj.vim'
+"use targets
+"Plug 'vim-scripts/argtextobj.vim'
+Plug 'wellle/targets.vim'
