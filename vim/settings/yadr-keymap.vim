@@ -186,8 +186,8 @@ map <silent> <leader>a: :Tabularize /:\zs<CR>
 " ============================
 " SplitJoin plugin
 " ============================
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+nmap <silent> <leader>ss :SplitjoinSplit<cr>
+nmap <silent> <leader>sj :SplitjoinJoin<cr>
 
 " Get the current highlight group. Useful for then remapping the color
 map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
