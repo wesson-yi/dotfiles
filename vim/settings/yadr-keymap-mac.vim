@@ -70,8 +70,9 @@ nnoremap <D-Right>  <C-w>>
 " Tabularize - alignment
 " ============================
 " Hit Cmd-Shift-A then type a character you want to align by
-nmap <D-A> :Tabularize /
-vmap <D-A> :Tabularize /
+" use vim-easy-align
+"nmap <D-A> :Tabularize /
+"vmap <D-A> :Tabularize /
 
 " Source current file Cmd-% (good for vim development)
 map <D-%> :so %<CR>

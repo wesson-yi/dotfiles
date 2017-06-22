@@ -179,9 +179,10 @@ nnoremap ` '
 " ============================
 " Tabularize - alignment
 " ============================
-map <silent> <leader>aa :Tabularize /
-map <silent> <leader>a= :Tabularize /=<CR>
-map <silent> <leader>a: :Tabularize /:\zs<CR>
+" use vim-easy-align
+"map <silent> <leader>aa :Tabularize /
+"map <silent> <leader>a= :Tabularize /=<CR>
+"map <silent> <leader>a: :Tabularize /:\zs<CR>
 
 " ============================
 " SplitJoin plugin
