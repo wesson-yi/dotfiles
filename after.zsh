@@ -13,7 +13,3 @@ test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 test -s "${HOME}/.yadr/bin/aws_zsh_completer.sh" && source "$HOME/.yadr/bin/aws_zsh_completer.sh"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="${HOME}/.sdkman"
-test -s "${HOME}/.sdkman/bin/sdkman-init.sh" && source "${HOME}/.sdkman/bin/sdkman-init.sh"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# usage: . ~/.yadr/bin/sdkman
+export SDKMAN_DIR="${HOME}/.sdkman"
+test -s "${HOME}/.sdkman/bin/sdkman-init.sh" && source "${HOME}/.sdkman/bin/sdkman-init.sh"
