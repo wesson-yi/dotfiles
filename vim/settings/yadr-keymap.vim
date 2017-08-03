@@ -202,6 +202,9 @@ imap kk ->
 imap aa @
 
 nnoremap <C-t>c :tabnew<CR>
+nnoremap <C-t>e :tabe %<CR>
+nnoremap <C-t>h :tabprevious<CR>
+nnoremap <C-t>l :tabnext<CR>
 nnoremap <silent> H :tabprevious<CR>
 nnoremap <silent> L :tabnext<CR>
 let g:lasttab = 1
