@@ -13,3 +13,4 @@ test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 test -s "${HOME}/.yadr/bin/aws_zsh_completer.sh" && source "$HOME/.yadr/bin/aws_zsh_completer.sh"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
+export PATH=$PATH:$JAVA_HOME/bin
