@@ -69,6 +69,8 @@ au FileType tex setlocal iskeyword+=:
 au FileType actionscript setlocal ts=4 sts=4 sw=4
 au FileType actionscript setlocal omnifunc=actionscriptcomplete#CompleteAS
 au FileType actionscript setlocal dictionary=dict/actionscript.dict
+j
+au FileType gradle setlocal ts=2 sts=2 sw=2
 
 " Source the vimrc file after saving it
 au bufwritepost .vimrc source ~/.vimrc
