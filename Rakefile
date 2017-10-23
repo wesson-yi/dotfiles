@@ -304,6 +304,7 @@ end
 def install_docker_completion
   puts
   puts "Installing Docker completion..."
+  run %{ mkdir -p ~/.zsh/completion }
   run %{ curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose }
   run %{ curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker -o ~/.zsh/completion/_docker }
 end
