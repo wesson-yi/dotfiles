@@ -16,3 +16,4 @@ vim/session
 .netrwhist
 bin/subl
 tags
+vim/autoload
