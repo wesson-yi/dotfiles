@@ -10,4 +10,6 @@ Plug 'xolox/vim-session'
 "Plug 'jeetsukumaran/vim-buffergator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'JazzCore/ctrlp-cmatcher'
-Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } "for git install
+Plug 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf', 'do': './install --all'  } "for brew install
+
