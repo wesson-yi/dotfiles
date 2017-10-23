@@ -16,4 +16,4 @@ for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
 PATH=$HOME/bin:$PATH
 export PATH
 fpath=(~/.zsh/completion $fpath)
-#autoload -Uz compinit && compinit -i # is it necessary here?
+autoload -Uz compinit && compinit -i # is it necessary here?

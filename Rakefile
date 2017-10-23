@@ -37,6 +37,8 @@ task :install => [:submodule_init, :submodules] do
     #Rake::Task["compile_ycm"].execute unless has_ycm
   end
 
+  Rake::Task["install_docker_completion"].execute
+
   puts "You can install tmux plugins via 'prefix + I'"
   success_msg("installed")
 end
@@ -44,6 +46,12 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+end
+
+task :install_docker_completion do
+  if want_to_install?('Docker completion')
+    install_docker_completion
   end
 end
 
@@ -291,6 +299,13 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+end
+
+def install_docker_completion
+  puts
+  puts "Installing Docker completion..."
+  run %{ curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose }
+  run %{ curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker -o ~/.zsh/completion/_docker }
 end
 
 def want_to_install? (section)
