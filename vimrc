@@ -115,6 +115,8 @@ set smartcase       " ...unless we type a capital
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
 
+autocmd BufWritePre * :%s/\s\+$//e
+
 " 把当前行作为 shell 命令异步执行
 nnoremap <Leader>ec :call RunCurrentLine()<CR>
 func! RunCurrentLine()
