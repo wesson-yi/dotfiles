@@ -38,7 +38,6 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'osx' \
   'ruby' \
-  'deer' \
   'history-substring-search' \
   'autosuggestions' \
   'ssh' \
@@ -49,7 +48,7 @@ zstyle ':prezto:load' pmodule \
 # Deer
 #
 # Set key bindings
-zstyle ':prezto:module:deer' key-bindings '\ek'
+#zstyle ':prezto:module:deer' key-bindings '\ek'
 
 #  'node' \
 #
