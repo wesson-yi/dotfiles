@@ -84,9 +84,15 @@ au FileType gradle setlocal ts=2 sts=2 sw=2
 au bufwritepost .vimrc source ~/.vimrc
 
 "CoffeeScript
+"Rails comfile CoffeeScript auto
 "This one compiles silently and with the -b option, but shows any errors:
-au BufWritePost *.coffee silent make! -b | cwindow | redraw!
-au BufNewFile,BufReadPost *.coffee setl sw=2 ts=2 sts=2 expandtab
+" au BufWritePost *.coffee silent make! -b | cwindow | redraw!
+" au BufNewFile,BufReadPost *.coffee setl sw=2 ts=2 sts=2 expandtab
+
+" au BufNewFile,BufReadPost *.coffee set shiftwidth=2 softtabstop=2 expandtab
+" autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+" au BufWritePost *.coffee silent make!
+" autocmd QuickFixCmdPost * nested cwindow | redraw!
 
 au WinEnter * setlocal cursorline
 au WinLeave * setlocal nocursorline
