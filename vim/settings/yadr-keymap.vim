@@ -215,7 +215,7 @@ nnoremap <silent> L :tabnext<CR>
 unmap H
 unmap L
 nnoremap ,ca :ChangeAroundSurrounding<CR>
-nnoremap ,cr :AsyncRun chrome-cli reload<CR>
+nnoremap ,rc :AsyncRun chrome-cli reload<CR>
 
 let g:lasttab = 1
 nnoremap <silent> T :exe "tabn ".g:lasttab<CR>
