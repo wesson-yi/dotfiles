@@ -368,6 +368,7 @@
     <!-- Map CONTROL_R to BACKSPACE -->
     <!-- Map OPTION_L to DELETE -->
     <!-- Map DELETE to OPTION_L -->
+    <!--
     <item>
       <name>OPTION_L Tap to Space</name>
       <appendix>Good for Advantage kinesis</appendix>
@@ -382,15 +383,13 @@
         </modifier_not>
         <autogen>
         __KeyOverlaidModifier__
-        <!-- from -->
         KeyCode::OPTION_L,
-        <!-- hold -->
         KeyCode::OPTION_L,
-        <!-- tap -->
         KeyCode::SPACE
         </autogen>
       </block>
     </item>
+    -->
 
     <item>
       <name>OPTION_R Tap to COMMAND + Z</name>
