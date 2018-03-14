@@ -19,6 +19,22 @@
     <appname>XMind</appname>
     <equal>org.xmind.cathy.application</equal>
   </appdef>
+  <appdef>
+    <appname>XMind</appname>
+    <equal>org.xmind.cathy.application</equal>
+  </appdef>
+  <replacementdef>
+    <replacementname>EMACS_MODE_IGNORE_APPS</replacementname>
+    <replacementvalue>
+      EMACS,
+      REMOTEDESKTOPCONNECTION,
+      TERMINAL,
+      VI,
+      VIRTUALMACHINE,
+      X11,
+      IntelliJ
+    </replacementvalue>
+  </replacementdef>
   <item>
     <name>Customized: General</name>
     <item>
