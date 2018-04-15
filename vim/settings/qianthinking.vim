@@ -3,6 +3,14 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
+let g:investigate_url_for_ruby="https://www.google.com/search?q=^s"
+let g:investigate_url_for_vim="https://www.google.com/search?q=^s"
+let g:investigate_url_for_zsh="https://www.google.com/search?q=^s"
+let g:investigate_url_for_sh="https://www.google.com/search?q=^s"
+let g:investigate_url_for_erb="https://www.google.com/search?q=^s"
+let g:investigate_url_for_css="https://www.google.com/search?q=^s"
+let g:investigate_url_for_md="https://www.google.com/search?q=^s"
+
 " share system clipboard
 if has("win16") || has("win32") || has("win64")
     set clipboard=unnamedplus
@@ -76,9 +84,15 @@ au FileType gradle setlocal ts=2 sts=2 sw=2
 au bufwritepost .vimrc source ~/.vimrc
 
 "CoffeeScript
+"Rails comfile CoffeeScript auto
 "This one compiles silently and with the -b option, but shows any errors:
-au BufWritePost *.coffee silent make! -b | cwindow | redraw!
-au BufNewFile,BufReadPost *.coffee setl sw=2 ts=2 sts=2 expandtab
+" au BufWritePost *.coffee silent make! -b | cwindow | redraw!
+" au BufNewFile,BufReadPost *.coffee setl sw=2 ts=2 sts=2 expandtab
+
+" au BufNewFile,BufReadPost *.coffee set shiftwidth=2 softtabstop=2 expandtab
+" autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+" au BufWritePost *.coffee silent make!
+" autocmd QuickFixCmdPost * nested cwindow | redraw!
 
 au WinEnter * setlocal cursorline
 au WinLeave * setlocal nocursorline
@@ -103,7 +117,8 @@ endif
 syntax match nonascii "[^\x00-\x7F]"
 highlight nonascii guibg=Red ctermbg=2
 
-let g:indentLine_enabled = 0
+" let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 
 nnoremap  <silent> <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>

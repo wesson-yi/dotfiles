@@ -16,20 +16,27 @@ if [ ! -d "$HOME/.yadr" ]; then
         echo "Unsupported OS: $OSTYPE"
         exit
     fi
+
     echo "Installing YADR for the first time."
-    git clone --depth=1 https://github.com/qianthinking/dotfiles.git "$HOME/.yadr"
+    # git clone --depth=1 https://github.com/qianthinking/dotfiles.git "$HOME/.yadr"
+    git clone --depth=1 -b stable_conf https://github.com/wesson-yi/dotfiles.git "$HOME/.yadr"
     GIT_COMP_VERSION=`git --version | awk '{print $3"\n1.7.11"}' | sort -n | head -n 1`
     echo "git version `git --version`, and $GIT_COMP_VERSION"
     if [[ "$GIT_COMP_VERSION" != "1.7.11" ]]; then
       echo "Set git push.default to matching"
       sed -i 's/upstream/matching/' ~/.yadr/git/gitconfig
     fi
+
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
       sed -i 's/\(^.*reattach\)/#\1/' ~/.yadr/tmux/tmux.conf
     fi
+
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     rake install
+    cd $HOME/.yadr/.git/modules; rm -rf zsh;
+    cd $HOME/.yadr/vim; find . -name ".git" -type d -exec rm -rf {} \;
+    cd $HOME/.yadr/zsh; find . -name ".git" -type d -exec rm -rf {} \;
 else
     echo "YADR is already installed"
 fi

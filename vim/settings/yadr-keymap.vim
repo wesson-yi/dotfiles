@@ -187,8 +187,12 @@ nnoremap ` '
 " ============================
 " SplitJoin plugin
 " ============================
+" nmap sj :SplitjoinSplit<cr>
+" nmap sk :SplitjoinJoin<cr>
 nmap <silent> <leader>ss :SplitjoinSplit<cr>
 nmap <silent> <leader>sj :SplitjoinJoin<cr>
+nmap ss :SplitjoinSplit<cr>
+nmap sj :SplitjoinJoin<cr>
 
 " Get the current highlight group. Useful for then remapping the color
 map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
@@ -207,6 +211,12 @@ nnoremap <C-t>h :tabprevious<CR>
 nnoremap <C-t>l :tabnext<CR>
 nnoremap <silent> H :tabprevious<CR>
 nnoremap <silent> L :tabnext<CR>
+
+unmap H
+unmap L
+nnoremap ,ca :ChangeAroundSurrounding<CR>
+nnoremap ,rc :AsyncRun chrome-cli reload<CR>
+
 let g:lasttab = 1
 nnoremap <silent> T :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()

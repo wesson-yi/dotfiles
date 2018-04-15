@@ -3,7 +3,10 @@
 " i and l are too easy to mistake for each other slowing
 " down recognition. The home keys and the immediate keys
 " accessible by middle fingers are available
-let g:EasyMotion_keys='asdfghjklweruiovmn'
+" Default: 'asdghklqwertyuiopzxcvbnmfj;'
+" let g:EasyMotion_keys='asdfghjklweruiovmn'
+let g:EasyMotion_keys='abcdefghijklmnopqrstuvwxyz'
+
 " replace vim-sneak
 nmap s <Plug>(easymotion-s)
 nmap f <Plug>(easymotion-bd-fl)

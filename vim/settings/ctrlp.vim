@@ -25,7 +25,10 @@ let g:ctrlp_switch_buffer = 0
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',ff'
-nnoremap <silent> <leader>ff :CtrlPtjump<CR>
+
+" source ~/.vimrc 之后， ,ff 无法工作
+" nnoremap <silent> <leader>ff :CtrlPtjump<CR>
+nnoremap <silent> <leader>ff :CtrlP<CR>
 
 " Additional mapping for buffer search
 nnoremap <silent> <leader>fb :CtrlPBuffer<cr>
