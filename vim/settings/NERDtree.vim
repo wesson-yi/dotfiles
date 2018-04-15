@@ -28,7 +28,8 @@ let g:NERDTreeWinSize = 30
 " map <F2> :silent! NERDTreeToggle
 
 " 关闭vim时，如果打开的文件只有NERDTree，则自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q |
+" 添加此项，autopairs 无法工作，而且此功能已经具备
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q |
 
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
 " let NERDTreeWinPos="right"
