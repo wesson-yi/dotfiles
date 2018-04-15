@@ -1,7 +1,8 @@
 require 'fileutils'
 
 # => [String, String, ..]
-files = Dir.entries("/Users/wesson.yi/")
+# files = Dir.entries("home/wesson")
+files = Dir.entries(`echo $HOME`.chomp!)
 
 files = files.map do |filename|
   File.expand_path(filename, "~")
@@ -17,5 +18,3 @@ end
 FileUtils.rm_rf(File.expand_path(".yadr", "~"))
 puts "Removing the dotfile .yadr..."
 puts "Removed: .yadr."
-
-

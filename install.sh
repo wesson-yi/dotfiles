@@ -16,6 +16,7 @@ if [ ! -d "$HOME/.yadr" ]; then
         echo "Unsupported OS: $OSTYPE"
         exit
     fi
+
     echo "Installing YADR for the first time."
     # git clone --depth=1 https://github.com/qianthinking/dotfiles.git "$HOME/.yadr"
     git clone --depth=1 -b stable_conf https://github.com/wesson-yi/dotfiles.git "$HOME/.yadr"
@@ -25,9 +26,11 @@ if [ ! -d "$HOME/.yadr" ]; then
       echo "Set git push.default to matching"
       sed -i 's/upstream/matching/' ~/.yadr/git/gitconfig
     fi
+
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
       sed -i 's/\(^.*reattach\)/#\1/' ~/.yadr/tmux/tmux.conf
     fi
+
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     rake install
