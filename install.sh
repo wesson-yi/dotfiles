@@ -34,6 +34,9 @@ if [ ! -d "$HOME/.yadr" ]; then
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     rake install
+    cd $HOME/.yadr/.git/modules; rm -rf zsh;
+    cd $HOME/.yadr/vim; find . -name ".git" -type d -exec rm -rf {} \;
+    cd $HOME/.yadr/zsh; find . -name ".git" -type d -exec rm -rf {} \;
 else
     echo "YADR is already installed"
 fi
