@@ -4,7 +4,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-session'
 " we should use ctrlp find in buffer
 "Plug 'bling/vim-bufferline'
 "Plug 'jeetsukumaran/vim-buffergator'
