@@ -18,4 +18,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'tfnico/vim-gradle'
 Plug 'fatih/vim-go'
+"Ember.js
 Plug 'AndrewRadev/ember_tools.vim'
+"Typescript IDE
+Plug 'Quramy/tsuquyomi'
+"Typescript syntax
+Plug 'leafgarland/typescript-vim'
