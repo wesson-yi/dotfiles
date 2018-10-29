@@ -51,14 +51,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -77,14 +77,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -103,14 +103,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -129,14 +129,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -155,14 +155,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -181,14 +181,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "device_if",
                                         "identifiers": [
                                             {
-                                                "vendor_id": 1523,
+                                                "description": "Advantage KINESIS USB",
                                                 "product_id": 7,
-                                                "description": "Advantage KINESIS USB"
+                                                "vendor_id": 1523
                                             }
-                                        ]
+                                        ],
+                                        "type": "device_if"
                                     }
                                 ],
                                 "from": {
@@ -321,7 +321,6 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.google.Chrome",
                                             "com.apple.finder",
                                             "com.apple.Safari",
                                             "org.mozilla.firefox"
@@ -352,7 +351,6 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "com.google.Chrome",
                                             "com.apple.finder",
                                             "com.apple.Safari",
                                             "org.mozilla.firefox"
