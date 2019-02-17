@@ -105,8 +105,12 @@ highlight nonascii guibg=Red ctermbg=2
 
 let g:indentLine_enabled = 0
 
-nnoremap  <silent> <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+"Exclude quickfix buffer from `:bnext` `:bprevious`
+"https://stackoverflow.com/questions/28613190/exclude-quickfix-buffer-from-bnext-bprevious
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
 
  " leave insert mode quickly
 if ! has('gui_running')
