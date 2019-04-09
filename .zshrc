@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
 
-PATH=$HOME/bin:$PATH
+PATH=$HOME/bin:$PATH:/usr/local/mysql/bin
 export PATH
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i # is it necessary here?
