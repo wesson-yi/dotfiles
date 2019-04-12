@@ -19,6 +19,20 @@ alias ylv='yadr vim-list-plugin'
 alias yup='yadr update-plugins'
 alias yip='yadr init-plugins'
 
+# Direction
+alias web='cd ~/Webs'
+alias webs='cd ~/Webs'
+alias apps='cd ~/Webs'
+alias app='cd ~/Webs'
+alias .yadr='cd ~/.yadr'
+alias cloud='cd /Users/wesson/Library/Mobile\ Documents/com~apple~CloudDocs/Documents'
+
+alias alo='cd ~/Webs/alo7'
+alias alo7='cd ~/Webs/alo7'
+alias vkl='cd ~/Webs/vcooline'
+alias vcl='cd ~/Webs/vcooline'
+alias mkj='cd ~/Webs/maikeji'
+
 # PS
 alias psa="ps aux"
 alias psg="ps aux | grep "
