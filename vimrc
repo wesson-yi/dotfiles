@@ -10,6 +10,9 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
+set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示
+set shortmess=Ot "Fix: Press Enter or type command to continue
+
 " ================ General Config ====================
 
 set number                      "Line numbers are good
@@ -116,8 +119,6 @@ set smartcase       " ...unless we type a capital
 so ~/.yadr/vim/settings.vim
 
 autocmd BufWritePre * :%s/\s\+$//e
-
-set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示
 
 " 把当前行作为 shell 命令异步执行
 nnoremap <Leader>ec :call RunCurrentLine()<CR>
