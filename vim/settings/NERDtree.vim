@@ -6,14 +6,14 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
+" ==================== modefied by wesson.yi
+
 " 打开文件，自动关闭 NERDTree
 " let g:NERDTreeQuitOnOpen = 1
 
 " nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 40<CR>
 " let g:NERDTreeWinSize = 30
 " let g:NERDTreeWinSize = 30
-
-" ==================== modefied by wesson.yi
 
 " 设置宽度
 " let g:NERDTreeWinSize                       = 40
