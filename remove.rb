@@ -1,6 +1,7 @@
 require 'fileutils'
 
 # => [String, String, ..]
+# files = Dir.entries("home/wesson")
 files = Dir.entries(`echo $HOME`.chomp!)
 
 files = files.map do |filename|

@@ -65,7 +65,7 @@
   rc = rebase --continue            # continue rebase
   rs = rebase --skip                # skip rebase
   ra = rebase --abort                # abort rebase
-
+  
   # merge
   ra = merge --abort                # abort rebase
 
@@ -169,3 +169,6 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[user]
+	name = wesson-yi
+	email = wesson_yi@163.com
