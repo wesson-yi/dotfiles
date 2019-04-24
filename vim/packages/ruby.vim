@@ -8,5 +8,5 @@ Plug 'keith/rspec.vim'
 " Plug 'skwp/vim-iterm-rspec'
 Plug 'skwp/vim-spec-finder'
 Plug 'ck3g/vim-change-hash-syntax'
-"Plug "thoughtbot/vim-rspec"
+"Plug 'thoughtbot/vim-rspec'
 Plug 'jgdavey/vim-turbux'
