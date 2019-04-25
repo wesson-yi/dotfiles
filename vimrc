@@ -24,6 +24,10 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 
+set synmaxcol=300               " 语法高亮渲染最大列数
+set nocursorline                " 指示当前行，具体样式就主题有所不同 set [no]cusorline/[no]cul, default
+set nocursorcolumn              " 指示当前列，具体样式就主题有所不同 set [no]cusorcolumn/[no]cuc, default
+
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
@@ -105,7 +109,7 @@ set wildignore+=*.pyc,.git,build/*,*.beam,ebin/*,*.class,*.lo,*.log,*coverage*,*
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=3         "Start scrolling when we're 3 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 

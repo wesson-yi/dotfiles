@@ -93,8 +93,8 @@ au bufwritepost .vimrc source ~/.vimrc
 " au BufWritePost *.coffee silent make!
 " autocmd QuickFixCmdPost * nested cwindow | redraw!
 
-au WinEnter * setlocal cursorline
-au WinLeave * setlocal nocursorline
+" au WinEnter * setlocal cursorline
+" au WinLeave * setlocal nocursorline
 
 " Input method
 "set iminsert=0
@@ -104,7 +104,7 @@ au WinLeave * setlocal nocursorline
 "au InsertLeave * se imd
 "au FocusGained * se imd
 
-set cul
+" set cul
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
