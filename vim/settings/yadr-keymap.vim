@@ -89,18 +89,21 @@ cnoremap <C-f> <RIGHT>
 cnoremap <C-h> <BACKSPACE>
 cnoremap <C-d> <DELETE>
 "imap <C-a> <esc>wa
-" ==== NERD tree
+
+" ============================================================================================================= NERDTree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
-" " calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
+" calls NERDTreeFind if NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
 function! OpenNerdTree()
   if &modifiable && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
   else
     NERDTreeToggle
   endif
+  setlocal nocursorline
 endfunction
 nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
 
+" =============================================================================================================
 " ,q to toggle quickfix window (where you have stuff like Ag)
 " ,oq to open it back up (rare)
 " instead, use ListToggle

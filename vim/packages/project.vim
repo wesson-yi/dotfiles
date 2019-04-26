@@ -1,6 +1,10 @@
 Plug 'scrooloose/nerdtree'
+" NERDTree 动态加载在（vim .) 的时候出现样式问题，故暂时注释
+" { 'on':  ['NERDTreeToggle', 'NERDTreeTabsToggle', 'NERDTreeFind'] }
+
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs', { 'on': ['NERDTreeToggle', 'NERDTreeTabsToggle'] }
+
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Plug 'xolox/vim-misc'
