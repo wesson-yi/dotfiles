@@ -16,7 +16,10 @@ noremap <silent> <leader>y y:call system('yank', @0)<Return>
 
 set mouse=nv "Enable mouse use in all modes
 set ttyfast "Send more characters for redraws
-set ttymouse=xterm2
+if has('nvim')
+else
+  set ttymouse=xterm2
+endif
 
 " complete
 set completeopt=menu,menuone,preview
