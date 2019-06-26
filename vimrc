@@ -124,6 +124,10 @@ set smartcase       " ...unless we type a capital
 so ~/.yadr/vim/settings.vim
 
 autocmd BufWritePre * :%s/\s\+$//e
+" tagbar 函数按出现的次序排序，默认按名称排序
+let g:tagbar_sort=0
+" tagbar 宽度
+let g:tagbar_width=60
 
 " 把当前行作为 shell 命令异步执行
 nnoremap <Leader>ec :call RunCurrentLine()<CR>
