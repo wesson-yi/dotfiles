@@ -49,7 +49,7 @@ map ,jv :CtrlP app/views<CR>
 map ,jj :CtrlP app/assets/javascripts<CR>
 map ,jh :CtrlP app/helpers<CR>
 map ,jl :CtrlP lib<CR>
-map ,jp :CtrlP public<CR>
+map ,jp :CtrlP app/policies<CR>
 map ,js :CtrlP spec<CR>
 map ,jf :CtrlP fast_spec<CR>
 map ,jd :CtrlP db<CR>
