@@ -1,7 +1,44 @@
 Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/neocomplete'
+
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  let g:deoplete#enable_at_startup = 1
+"else
+"  Plug 'Shougo/neocomplete'
+"endif
+"if !exists('g:gui_oni')
+"  Plug 'prabirshrestha/async.vim'
+"  Plug 'prabirshrestha/vim-lsp'
+"  if executable('java') && filereadable(expand('~/workspace/eclipse.jdt.ls-0.41.0/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'))
+"      au User lsp_setup call lsp#register_server({
+"          \ 'name': 'eclipse.jdt.ls',
+"          \ 'cmd': {server_info->[
+"          \     'java',
+"          \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+"          \     '-Dosgi.bundles.defaultStartLevel=4',
+"          \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+"          \     '-Dlog.level=NONE',
+"          \     '-noverify',
+"          \     '-Dfile.encoding=UTF-8',
+"          \     '-Xmx1G',
+"          \     '-jar',
+"          \     expand('~/workspace/eclipse.jdt.ls-0.41.0/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'),
+"          \     '-configuration',
+"          \     expand('~/workspace/eclipse.jdt.ls-0.41.0/org.eclipse.jdt.ls.product/target/repository/config_mac'),
+"          \     '-data',
+"          \     getcwd()
+"          \ ]},
+"          \ 'whitelist': ['java'],
+"          \ })
+"  endif
+"endif
+"let g:lsp_log_verbose=1
+"let g:lsp_log_file=expand('~/tmp/vim-lsp.log')
+
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
 Plug 'briandoll/change-inside-surroundings.vim'
 "Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
@@ -21,7 +58,7 @@ Plug 'sjl/gundo.vim'
 "Plug 'skwp/YankRing.vim'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'

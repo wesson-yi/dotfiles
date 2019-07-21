@@ -76,7 +76,7 @@ j
 au FileType gradle setlocal ts=2 sts=2 sw=2
 
 " Source the vimrc file after saving it
-au bufwritepost .vimrc source ~/.vimrc
+"au bufwritepost .vimrc source ~/.vimrc
 
 "CoffeeScript
 "This one compiles silently and with the -b option, but shows any errors:

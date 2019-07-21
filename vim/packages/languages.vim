@@ -4,7 +4,7 @@ Plug 'garbas/vim-snipmate'
 "Completion for c, cpp, python, need compile with clang
 "I put it into vim/.vundles.local due to it is too heavy.
 "Plug 'Valloric/YouCompleteMe'
-Plug 'artur-shaik/vim-javacomplete2'
+"Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'qianthinking/vim-android'
 "Plug 'mattn/emmet-vim'
 Plug 'honza/vim-snippets'

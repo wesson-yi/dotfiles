@@ -1,6 +1,6 @@
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'xolox/vim-misc'
@@ -13,4 +13,5 @@ Plug 'JazzCore/ctrlp-cmatcher'
 "FZF base Homebrew
 "Plug '/usr/local/opt/fzf'
 "Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
