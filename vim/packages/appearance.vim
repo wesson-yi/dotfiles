@@ -10,8 +10,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jby/tmux.vim'
 " theme like solarized
 Plug 'morhetz/gruvbox'
-" <leader>mt, mo, mh, ma, mm
-"Plug "xsunsmile/showmarks"
 Plug 'chriskempson/base16-vim'
 
 "colorscheme hybrid
@@ -19,3 +17,6 @@ Plug 'kristijanhusak/vim-hybrid-material'
 
 " Required for Gblame in terminal vim
 Plug 'godlygeek/csapprox'
+
+"colorscheme tender
+Plug 'jacoborus/tender.vim'

@@ -24,3 +24,4 @@ Plug 'AndrewRadev/ember_tools.vim'
 Plug 'Quramy/tsuquyomi'
 "Typescript syntax
 Plug 'leafgarland/typescript-vim'
+Plug 'chemzqm/wxapp.vim'

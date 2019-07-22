@@ -16,7 +16,7 @@ if !has("nvim")
   set incsearch                   " Find the next match as we type the search
   set hlsearch                    " Highlight searches by default
   set smarttab
-  set showcmd                     "Show incomplete cmds down the bottom set 
+  set showcmd                     "Show incomplete cmds down the bottom set
   set sidescroll=1
   set tags=.tags;,tags
   set tabpagemax=50
@@ -64,7 +64,7 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
-" ================ General Config ==================== 
+" ================ General Config ====================
 set number                      "Line numbers are good
 set gcr=a:blinkon0              "Disable cursor blink
 
@@ -216,7 +216,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename) 
+nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 xmap <leader>fs  <Plug>(coc-format-selected)
 nmap <leader>fs  <Plug>(coc-format-selected)
@@ -276,7 +276,12 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 " ================ Color scheme ========================
-let g:hybrid_custom_term_colors = 1
+
+let g:enable_bold_font = 0
+let g:enable_italic_font = 1
+
+let g:hybrid_custom_term_colors = 0
 let g:hybrid_reduced_contrast = 1
-"colorscheme hybrid_reverse
-colorscheme solarized8_flat
+colorscheme solarized8
+let g:lightline.colorscheme='solarized'
+
