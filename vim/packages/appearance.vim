@@ -6,8 +6,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'w0ng/vim-hybrid'
 " statusline
 Plug 'itchyny/lightline.vim'
-" ?
-Plug 'jby/tmux.vim'
+" highlight .tmux.conf not compatible with new tmux
+"Plug 'jby/tmux.vim'
 " theme like solarized
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
