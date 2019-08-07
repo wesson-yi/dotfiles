@@ -207,7 +207,7 @@ of plugins above to learn more.
  * `gK` - Opens the documentation for the word under the cursor.
  * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
  * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
- 
+
 
 #### File Navigation
 
@@ -343,3 +343,12 @@ Pry offers a much better out of the box IRB experience with colors, tab completi
 as an actual debugger by installing [pry-nav](https://github.com/nixme/pry-nav).
 
 [Learn more about YADR's pry customizations and how to install](doc/pry.md)
+
+
+### 注意
++ 这个项目对其依赖项目，在版本管理上存在不足。在其依赖的插件更新后，时不时会出现一些兼容性问题，索性添加一个稳定版的压缩包 `.yadr.zip.20190807`，如果出现兼容性问题，可直接解压后覆盖本地 `~/.yadr` 文件夹
+
++ `.yadr.zip.20190807` 对应版本
+  + tmux 2.5
+  + vim 8.0
+
