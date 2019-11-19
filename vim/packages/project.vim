@@ -13,5 +13,6 @@ Plug 'JazzCore/ctrlp-cmatcher'
 "FZF base Homebrew
 "Plug '/usr/local/opt/fzf'
 "Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
 
