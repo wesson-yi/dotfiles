@@ -282,6 +282,5 @@ let g:enable_italic_font = 1
 
 let g:hybrid_custom_term_colors = 0
 let g:hybrid_reduced_contrast = 1
-colorscheme solarized8
-let g:lightline.colorscheme='solarized'
-
+colorscheme hybrid_material
+let g:lightline.colorscheme='material'
