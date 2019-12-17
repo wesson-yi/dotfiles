@@ -15,7 +15,7 @@ Plug 'nelstrom/vim-markdown-preview'
 Plug 'skwp/vim-html-escape'
 "Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'jparise/vim-graphql'
+"Plug 'jparise/vim-graphql'
 Plug 'tfnico/vim-gradle'
 Plug 'fatih/vim-go'
 "Ember.js
