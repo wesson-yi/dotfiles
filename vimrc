@@ -273,8 +273,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " override coc setting for buffer jumping
-nnoremap <silent> <c-i> :bnext<CR>
-nnoremap <silent> <c-o> :bprev<CR>
+nnoremap <silent> <c-i> :BufSurfForward<CR>
+nnoremap <silent> <c-o> :BufSurfBack<CR>
 " ================ Coc Settings End ========================
 
 

@@ -2,6 +2,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
+" jump between buffers with visited order
+Plug 'qianthinking/vim-bufsurf'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
