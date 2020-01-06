@@ -6,8 +6,9 @@
 let g:EasyMotion_keys='asdfghjklweruiovmn'
 " replace vim-sneak
 nmap s <Plug>(easymotion-s)
-nmap f <Plug>(easymotion-bd-fl)
-nmap t <Plug>(easymotion-bd-tl)
+"" use default f/t for macro recording
+"nmap f <Plug>(easymotion-bd-fl)
+"nmap t <Plug>(easymotion-bd-tl)
 nmap <Space>w <Plug>(easymotion-bd-w)
 nmap <Space>e <Plug>(easymotion-bd-e)
 nmap <Space>l <Plug>(easymotion-bd-jk)
