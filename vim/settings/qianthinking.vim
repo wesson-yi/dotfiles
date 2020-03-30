@@ -47,7 +47,12 @@ au BufReadPost *
 au FileType python let python_highlight_all=1
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 
-au FileType javascript setlocal ts=2 sts=2 sw=2
+" support jsonc - json with comment
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+"use coc.vim eslint
+au FileType javascript,typescript :ALEDisable
+au FileType javascript,typescript setlocal ts=2 sts=2 sw=2
 
 au FileType ruby,eruby setlocal ts=2 sts=2 sw=2
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
