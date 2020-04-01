@@ -283,7 +283,14 @@ nnoremap <silent> <c-o> :BufSurfBack<CR>
 let g:enable_bold_font = 0
 let g:enable_italic_font = 1
 
-let g:hybrid_custom_term_colors = 0
+" use term bg color(black) to fix the bracket color in the float window
+let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 colorscheme hybrid_material
 let g:lightline.colorscheme='material'
+
+hi! CursorLine guibg=#263238 ctermbg=234
+" Change Color when entering Insert Mode
+autocmd InsertEnter * highlight CursorLine guibg=black ctermbg=black
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * highlight CursorLine guibg=#263238 ctermbg=234
