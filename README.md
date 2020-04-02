@@ -51,6 +51,8 @@ about each one, use:
 bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`" -s ask
 ```
 
+# NOTE: Some items below about Vim are outdated, use Neovim+coc.vim now
+
 ## Wait, you're not done! Do this:
 
 #### Install iTerm Solarized Colors
@@ -161,7 +163,6 @@ also an included Ctrl-R reverse history search feature in editrc, very useful in
 
 We include the `ghi` command. Try `ghi list` and have fun managing issues from command line!
 
-
 ## Vim - What's included?
 
  * [Navigation - NERDTree, EasyMotion, CtrlP and more](doc/vim/navigation.md)
@@ -204,10 +205,11 @@ of plugins above to learn more.
  * `s` + one letter - EasyMotion search bidirectional letters
  * `/` - EasyMotion search with `Tab`/`S-Tab` to scroll and `Enter` to select
  * `,mc` - mark this word for MultiCursor (like sublime). Use `Ctrl-n` (next), `Ctrl-p` (prev), `Ctrl-x`(skip) to add more cursors, then do normal vim things like edit the word.
- * `gK` - Opens the documentation for the word under the cursor.
+ * `gK` - Opens the documentation in Dash for the word under the cursor.
+ * `gD` - Opens the documentation in code for the word under the cursor.
  * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
  * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
- 
+
 
 #### File Navigation
 
@@ -321,21 +323,6 @@ These hacks are Lion-centric. May not work for other OS'es. My favorite mods inc
   * No disk image verification (downloaded files open quicker)
   * Display the ~/Library folder in finder (hidden in Lion)
 
-### Macvim troubles with Lua?
-```
-brew uninstall macvim
-brew remove macvim
-brew cleanup
-brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
-```
-
-### Terminal Vim troubles with Lua?
-Installing terminal vim (with lua) with an RVM managed Ruby can cause the neocomplete plugin to segfault. Try uninstalling vim, then installing with system ruby:
-
-```
-brew uninstall vim
-rvm system do brew install vim --with-lua
-```
 
 ### [Pry](https://pryrepl.org/)
 
