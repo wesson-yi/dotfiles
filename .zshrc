@@ -24,3 +24,5 @@ profile_script_start "completion path"
 fpath=(~/.zsh/completion $fpath)
 profile_script_start "completion init"
 autoload -Uz compinit && compinit -i # is it necessary here?
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
