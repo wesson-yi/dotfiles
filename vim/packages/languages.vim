@@ -17,7 +17,7 @@ Plug 'skwp/vim-html-escape'
 Plug 'pangloss/vim-javascript'
 "Plug 'jparise/vim-graphql'
 Plug 'tfnico/vim-gradle'
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 "Ember.js
 Plug 'AndrewRadev/ember_tools.vim'
 "Typescript IDE
