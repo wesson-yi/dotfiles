@@ -60,7 +60,7 @@ task :update do
   Rake::Task["install"].execute
 
   puts "Install Vim-Plug packages ..........."
-  system "vim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
+  system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
   run %{
     cd $HOME/.tmux/plugins/tpm
     git pull
@@ -109,7 +109,7 @@ task :install_plug do
     puts "retry #{retry_times} install plug.vim"
   end
   puts "Install Vim-Plug packages ..........."
-  system "vim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall +qall"
+  system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall +qall"
 end
 
 desc "compile YouCompleteMe"
@@ -181,7 +181,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint neovim}
   run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   run %{$(brew --prefix)/opt/fzf/install}
   puts
