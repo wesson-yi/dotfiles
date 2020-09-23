@@ -49,37 +49,49 @@ function prompt_qianthinking_setup {
     __PROMPT_QIANTHINKING_COLORS=(
       "%F{74}"  # turquoise
       "%F{130}" # orange
-      "%F{97}" # purple
-      "%F{161}" # hotpink
+      "%F{45}" #
       "%F{70}" # limegreen
+      "%F{77}" # limegreen
+      "%F{68}" # lightblue
+      "%F{9}" # red
+      "%F{97}" #purple
     )
   else
     __PROMPT_QIANTHINKING_COLORS=(
       "%F{cyan}"
       "%F{yellow}"
-      "%F{magenta}"
-      "%F{red}"
+      "%F{lightcyan}"
+      "%F{lightred}"
       "%F{green}"
+      "%F{lightblue}"
+      "%F{grey}"
+      "%F{red}"
+      "%F{magenta}"
     )
   fi
 
   # git
-  #zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:git:info:branch' format "${__PROMPT_QIANTHINKING_COLORS[1]}%b%f"
-  #zstyle ':prezto:module:git:info:remote' format 'remote:%R'
+  zstyle ':prezto:module:git:info:remote' format "${__PROMPT_QIANTHINKING_COLORS[6]}%R%f"
   zstyle ':prezto:module:git:info:added' format "${__PROMPT_QIANTHINKING_COLORS[5]}●%f"
   zstyle ':prezto:module:git:info:deleted' format "${__PROMPT_QIANTHINKING_COLORS[2]}●%f"
   zstyle ':prezto:module:git:info:modified' format "${__PROMPT_QIANTHINKING_COLORS[4]}●%f"
   zstyle ':prezto:module:git:info:untracked' format "${__PROMPT_QIANTHINKING_COLORS[3]}●%f"
-  zstyle ':prezto:module:git:info:keys' format 'prompt' '(%b%d%a%m%u%c)'
+  zstyle ':prezto:module:git:info:unmerged' format "${__PROMPT_QIANTHINKING_COLORS[7]}●%f"
+  zstyle ':prezto:module:git:info:keys' format \
+    'prompt' '(%b%d%a%m%u%U%A%B%c) %s' \
+    'rprompt' '%F{246}[%f%R%F{246}]%f'
+  zstyle ':prezto:module:git:info:action:merge' format 'merge'
+  zstyle ':prezto:module:git:info:action:rebase' format 'rebase'
 
   # ruby info (rvm, rbenv)
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
   # node info (nvm)
   zstyle ':prezto:module:node:info:version' format '[%v]'
   NEWLINE=$'\n»%f '
-  PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[5]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
-  RPROMPT='%F{24}${node_info[version]}${ruby_info[version]}[$current_time]'
+  PROMPT="${__PROMPT_QIANTHINKING_COLORS[8]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[5]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
+  RPROMPT='$git_info[rprompt]%F{246}${node_info[version]}${ruby_info[version]}[$current_time]'
 }
 
 function prompt_awreece_is_ssh {
