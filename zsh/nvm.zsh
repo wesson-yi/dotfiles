@@ -6,8 +6,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 \( -type l -o -type f \) -wholename '*/bin/*' | xargs -n1 basename | sort | uniq | grep -v which`)
   fi
   NODE_GLOBALS+=("nvm")
-  NODE_GLOBALS+=("vim")
-  NODE_GLOBALS+=("nvim")
 
   load_nvm () {
     # Unset placeholder functions
