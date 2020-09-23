@@ -26,12 +26,12 @@ function prompt_qianthinking_precmd {
 
   # Get ruby information
   if (( $+functions[ruby-info] )); then
-    ruby-info
+    [ "$PROMPT_RUBY_INFO" = true ] && ruby-info
   fi
 
   # Get node information
   if (( $+functions[node-info] )); then
-    node-info
+    [ "$PROMPT_NODE_INFO" = true ] && node-info
   fi
 }
 
