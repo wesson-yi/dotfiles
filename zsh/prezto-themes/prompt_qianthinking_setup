@@ -90,7 +90,7 @@ function prompt_qianthinking_setup {
   # node info (nvm)
   zstyle ':prezto:module:node:info:version' format '[%v]'
   NEWLINE=$'\n»%f '
-  PROMPT="${__PROMPT_QIANTHINKING_COLORS[8]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[5]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
+  PROMPT="${__PROMPT_QIANTHINKING_COLORS[8]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[4]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
   RPROMPT='$git_info[rprompt]%F{246}${node_info[version]}${ruby_info[version]}[$current_time]'
 }
 
