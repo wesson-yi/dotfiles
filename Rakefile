@@ -57,9 +57,10 @@ end
 
 desc 'Updates the installation'
 task :update do
-  Rake::Task["install"].execute
+  puts "update Prezto ..........."
+  system "test -d $HOME/.yadr/zsh/prezto && cd $HOME/.yadr/zsh/prezto && git pull && git submodule update --init --recursive"
 
-  puts "Install Vim-Plug packages ..........."
+  puts "update Vim-Plug packages ..........."
   system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
   run %{
     cd $HOME/.tmux/plugins/tpm
