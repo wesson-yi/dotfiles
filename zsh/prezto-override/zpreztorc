@@ -42,6 +42,7 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions' \
   'ssh' \
   'syntax-highlighting' \
+  'alias-tips' \
   'prompt'
 
 #
