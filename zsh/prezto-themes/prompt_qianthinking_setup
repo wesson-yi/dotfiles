@@ -56,6 +56,18 @@ function prompt_qianthinking_preexec {
 function prompt_qianthinking_precmd {
   # Check execution time and store it in a variable.
 	prompt_qianthinking_check_cmd_exec_time
+
+
+  typeset -g k8s_prompt=''
+  if [ ! -z "$K8S_CONTEXT" ]
+  then
+    k8s_prompt+="%F{red}$K8S_CONTEXT%f"
+  fi
+  if [ ! -z "$K8S_NAMESPACE" ]
+  then
+    k8s_prompt+=":%F{yellow}$K8S_NAMESPACE%f"
+  fi
+
 	unset prompt_qianthinking_cmd_timestamp
 
   current_time=`date "+%H:%M:%S"`
@@ -154,7 +166,9 @@ function prompt_qianthinking_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
   # node info (nvm)
   zstyle ':prezto:module:node:info:version' format '[%v]'
-  NEWLINE=$'\n»%f '
+
+
+  NEWLINE=$'\n$k8s_prompt»%f '
   PROMPT="${__PROMPT_QIANTHINKING_COLORS[8]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[4]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
   RPROMPT='%F{130}$prompt_qianthinking_cmd_exec_time%f$git_info[rprompt]%F{246}${node_info[version]}${ruby_info[version]}[$current_time]'
 }
