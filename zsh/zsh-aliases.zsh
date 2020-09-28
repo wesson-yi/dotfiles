@@ -13,14 +13,3 @@ alias -g be='bundle exec' #shorter, or see prezto/modules/ruby
 
 alias -g cat='bat'
 alias -g cat='bat'
-
-# Functions
-#
-# (f)ind by (n)ame
-# usage: fn foo 
-# to find all files containing 'foo' in the name
-function fn() {
-  ARGV=${@:1:-1}
-  NAME=${@: -1}
-  ls -Ghld $ARGV  **/*$NAME* 
-}

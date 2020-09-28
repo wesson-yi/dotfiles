@@ -182,7 +182,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint neovim thefuck tldr ripgrep bat}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint neovim thefuck tldr ripgrep bat fd}
   run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   run %{$(brew --prefix)/opt/fzf/install}
   puts
