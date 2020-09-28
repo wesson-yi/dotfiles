@@ -32,13 +32,9 @@ alias cls='clear;ls'
 alias df='df -h'
 alias du='du -h -d 2'
 
-if [[ $platform == 'linux' ]]; then
-  alias ll='ls -alh --color=auto'
-  alias ls='ls --color=auto'
-elif [[ $platform == 'darwin' ]]; then
-  alias ll='ls -alGh'
-  alias ls='ls -Gh'
-fi
+alias ls='ls -h --color=auto'
+alias ll='ls -lhv --group-directories-first --color=auto'
+alias la='ll -A'
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
