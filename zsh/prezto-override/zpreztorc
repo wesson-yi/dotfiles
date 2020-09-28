@@ -43,6 +43,8 @@ zstyle ':prezto:load' pmodule \
   'ssh' \
   'syntax-highlighting' \
   'alias-tips' \
+  'enhancd' \
+  'thefuck' \
   'prompt'
 
 #
