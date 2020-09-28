@@ -11,8 +11,10 @@ then
     else
       if [[ -z "$K8S_NAMESPACE" ]] || [[ "$*" == *'-n'* ]] || [[ "$*" == *'--namespace'* ]]
       then
+        echo "\033[1;94mkubectl --context $K8S_CONTEXT $@\033[0m"
         command kubectl --context $K8S_CONTEXT $@
       else
+        echo "\033[1;94mkubectl --context $K8S_CONTEXT --namespace $K8S_NAMESPACE $@\033[0m"
         command kubectl --context $K8S_CONTEXT --namespace $K8S_NAMESPACE $@
       fi
     fi
