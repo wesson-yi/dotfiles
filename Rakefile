@@ -57,8 +57,12 @@ end
 
 desc 'Updates the installation'
 task :update do
+
+  system "test -d $HOME/.zprezto/contrib || (cd $HOME/.zprezto && git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib)"
+
   puts "update Prezto ..........."
-  system "test -d $HOME/.yadr/zsh/prezto && cd $HOME/.yadr/zsh/prezto && git pull && git submodule update --init --recursive"
+  system "test -d $HOME/.zprezto && cd $HOME/.zprezto && git pull && git submodule update --init --recursive"
+
 
   puts "update Vim-Plug packages ..........."
   system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
@@ -301,6 +305,8 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+
+  system "test -d $HOME/.zprezto/contrib || (cd $HOME/.zprezto && git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib)"
 end
 
 def install_docker_completion
