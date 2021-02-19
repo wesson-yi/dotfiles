@@ -1,5 +1,5 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
   # Skip adding binaries if there is no node version installed yet
   if [ -d $NVM_DIR/versions/node ]; then
