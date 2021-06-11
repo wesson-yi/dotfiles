@@ -5,27 +5,17 @@
 if [ ! "$K8S_CONTEXT_NAMESPACE_ENV" = 'disabled' ]
 then
   function kubectl() {
-    if [ "$2" = '' ] || [ "$1" = 'krew' ]
-    then
-      # not support for context/namespace
-      command kubectl $@
+    echo "$@" >> /tmp/kube
+    if [ -z "$K8S_CONTEXT" ]; then
+      command kubectl "$@"
     else
-      if [ -z "$K8S_CONTEXT" ]
-      then
-        echo "ENV Variable: K8S_CONTEXT required, see $HOME/.yadr/zsh/kubectl.zsh"
+      if [ -z "$K8S_NAMESPACE" ] || [[ "$*" == '-n'* ]] || [[ "$*" == '--namespace'* ]]; then
+        command kubectl --context $K8S_CONTEXT "$@"
       else
-        if [ -z "$K8S_NAMESPACE" ] || [[ "$*" == '-n'* ]] || [[ "$*" == '--namespace'* ]]
-        then
-          echo "\033[1;94mkubectl $1 --context $K8S_CONTEXT ${@:2}\033[0m"
-          command kubectl $1 --context $K8S_CONTEXT ${@:2}
-        else
-          echo "\033[1;94mkubectl $1 --context $K8S_CONTEXT -n $K8S_NAMESPACE ${@:2}\033[0m"
-          command kubectl $1 --context $K8S_CONTEXT -n $K8S_NAMESPACE ${@:2}
-        fi
+        command kubectl --context $K8S_CONTEXT -n $K8S_NAMESPACE "$@"
       fi
     fi
   }
-
   function kbc() {
     export K8S_CONTEXT=$1
   }
@@ -39,3 +29,4 @@ then
     export K8S_NAMESPACE=''
   }
 fi
+
