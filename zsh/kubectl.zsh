@@ -5,7 +5,6 @@
 if [ ! "$K8S_CONTEXT_NAMESPACE_ENV" = 'disabled' ]
 then
   function kubectl() {
-    echo "$@" >> /tmp/kube
     if [ -z "$K8S_CONTEXT" ]; then
       command kubectl "$@"
     else
