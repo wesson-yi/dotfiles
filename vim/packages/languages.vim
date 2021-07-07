@@ -27,3 +27,5 @@ Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'chemzqm/wxapp.vim'
+Plug 'towolf/vim-helm'
+

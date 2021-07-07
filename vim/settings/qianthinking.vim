@@ -37,6 +37,7 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
 au BufNewFile,BufRead *.as set filetype=actionscript
 au BufNewFile,BufRead {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 au BufNewFile,BufRead *.gradle set filetype=groovy
+au BufNewFile,BufRead helmfile.yaml,*.gotmpl set ft=helm
 
 au FileType text setlocal textwidth=80
 " return previous editing position
