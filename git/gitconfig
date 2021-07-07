@@ -171,3 +171,5 @@
   path = .gitconfig.user
 [pull]
   rebase = false
+[diff "sopsdiffer"]
+	textconv = sops -d
