@@ -28,4 +28,5 @@ Plug 'leafgarland/typescript-vim'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'chemzqm/wxapp.vim'
 Plug 'towolf/vim-helm'
-
+Plug 'Joorem/vim-haproxy'
+Plug 'chr4/nginx.vim'
