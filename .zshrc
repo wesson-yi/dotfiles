@@ -20,9 +20,6 @@ profile_script_end() {
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-autoload -Uz compinit
-compinit
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   profile_script_start "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -35,6 +32,8 @@ profile_script_start "completion path"
 fpath=(~/.zsh/completion $fpath)
 zstyle ':completion::complete:*' use-cache 1
 profile_script_start "completion init"
+
+autoload -Uz compinit && compinit -i
 
 export PATH="$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
