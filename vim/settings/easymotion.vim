@@ -5,7 +5,7 @@
 " accessible by middle fingers are available
 let g:EasyMotion_keys='asdfghjklweruiovmn'
 " replace vim-sneak
-nmap s <Plug>(easymotion-s)
+nmap <Leader>s <Plug>(easymotion-s)
 "" use default f/t for macro recording
 "nmap f <Plug>(easymotion-bd-fl)
 "nmap t <Plug>(easymotion-bd-tl)

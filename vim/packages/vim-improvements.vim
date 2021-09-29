@@ -1,4 +1,4 @@
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/splitjoin.vim' "gS gJ
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 

@@ -1,1 +1,1 @@
-nmap <silent> <leader>sd :Dash<CR>
+nmap <silent> <leader>gs :Dash<CR>
