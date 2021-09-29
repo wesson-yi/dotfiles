@@ -26,8 +26,8 @@ set completeopt=menu,menuone,preview
 "set completeopt=menuone,menu,longest,preview
 
 set pastetoggle=<F7>
-set tags=.tags;
-map <F10> :!ctags -R --fields=+iaS --extra=+q -f .tags .<CR>
+set tags=./.tags;,.tags
+map <F10> :!ctags -R --fields=+iaS --output-format=e-ctags --extras=+q -f .tags .<CR>
 
 let g:used_javascript_libs = 'jquery'
 
