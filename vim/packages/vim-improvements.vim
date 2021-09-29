@@ -69,7 +69,8 @@ Plug 'vim-scripts/lastpos.vim'
 Plug 'vim-scripts/sudo.vim'
 Plug 'goldfeld/ctrlr.vim'
 "Tags in file, map in its window: <F1>, p, s, <c-n>, <c-p>, q
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+"Plug 'liuchengxu/vista.vim'
 "execute whole/part of editing file, map: <F5>
 Plug 'thinca/vim-quickrun'
 "Plug 'Shougo/vimproc.vim'
