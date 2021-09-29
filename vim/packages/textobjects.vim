@@ -13,7 +13,7 @@ Plug 'rhysd/vim-textobj-anyblock'
 "Plug "beloglazov/vim-textobj-quotes"
 Plug 'machakann/vim-textobj-delimited'
 "Plug "lucapette/vim-textobj-underscore"
-Plug 'nelstrom/vim-textobj-rubyblock'
+"Plug 'nelstrom/vim-textobj-rubyblock' "a little slow on start
 Plug 'thinca/vim-textobj-function-javascript'
 "use targets
 "Plug 'vim-scripts/argtextobj.vim'

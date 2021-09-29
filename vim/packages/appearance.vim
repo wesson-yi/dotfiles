@@ -15,8 +15,5 @@ Plug 'chriskempson/base16-vim'
 "colorscheme hybrid
 Plug 'kristijanhusak/vim-hybrid-material'
 
-" Required for Gblame in terminal vim
-Plug 'godlygeek/csapprox'
-
 "colorscheme tender
 Plug 'jacoborus/tender.vim'
