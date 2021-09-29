@@ -24,17 +24,18 @@ if !has("nvim")
   set wildmenu                    "enable ctrl-n and ctrl-p to scroll thru matches
   set background=dark
 
-" ================ Persistent Undo ==================
-  " Keep undo history across sessions, by storing in file.
-  " Only works all the time.
-  if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-    silent !mkdir ~/.vim/backups > /dev/null 2>&1
-    set undodir=~/.vim/backups
-    set undofile
-  endif
-
 endif
 " ================ Vim only : end   ==============
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
 
 
 " make Vim 8 slow
