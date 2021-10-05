@@ -13,3 +13,10 @@ alias -g be='bundle exec' #shorter, or see prezto/modules/ruby
 
 alias -g cat='bat'
 alias -g cat='bat'
+
+alias find='\find'
+alias rake='noglob rake'
+alias rsync='\rsync'
+alias scp='\scp'
+alias sftp='\sftp'
+
