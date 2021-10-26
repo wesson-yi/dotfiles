@@ -1,6 +1,10 @@
 require 'rake'
 require 'fileutils'
 
+def check_os(os)
+  system "cat /etc/*release | grep -i #{os.downcase}"
+end
+
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
@@ -9,8 +13,12 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts
 
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
-  install_rvm_binstubs
+  if RUBY_PLATFORM.downcase.include?("darwin")
+    install_homebrew
+  elsif check_os('ubuntu')
+    install_ubuntu
+  end
+  #install_rvm_binstubs
 
   # this has all the runcoms from this directory.
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
@@ -32,6 +40,8 @@ task :install => [:submodule_init, :submodules] do
   run_bundle_config
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
+    run %{ mkdir -p ~/.config && ln -nfs #{ENV["PWD"]}/vim/nvim ~/.config/ && ln -nfs #{ENV["PWD"]}/vimrc ~/.config/nvim/init.vim}
+    run %{ mkdir -p ~/.config/nvim/autoload && ln -nfs #{ENV["PWD"]}/vim/autoload/plug.vim ~/.config/nvim/autoload/ }
     Rake::Task["install_plug"].execute
     #has_ycm = File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
     #Rake::Task["compile_ycm"].execute unless has_ycm
@@ -54,6 +64,7 @@ task :install_docker_completion do
     install_docker_completion
   end
 end
+
 
 desc 'Updates the installation'
 task :update do
@@ -186,10 +197,28 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint neovim thefuck tldr ripgrep bat fd exa global}
+  run %{brew install zsh git hub tmux reattach-to-user-namespace the_silver_searcher ghi coreutils jq tree fzf jsonlint neovim tldr ripgrep bat fd exa global}
   run %{brew install --HEAD universal-ctags/universal-ctags/universal-ctags}
   #run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   run %{$(brew --prefix)/opt/fzf/install}
+  puts
+  puts
+end
+
+
+def install_ubuntu
+  puts
+  puts
+  puts "======================================================"
+  puts "Updating"
+  puts "======================================================"
+  run %{sudo apt update}
+  puts
+  puts
+  puts "======================================================"
+  puts "Installing packages...There may be some warnings."
+  puts "======================================================"
+  run %{sudo apt install -y zsh git tmux silversearcher-ag coreutils jq tree jsonlint neovim tldr bat global}
   puts
   puts
 end

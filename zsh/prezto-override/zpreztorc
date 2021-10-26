@@ -44,7 +44,6 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'alias-tips' \
   'enhancd' \
-  'thefuck' \
   'prompt'
 
 #
