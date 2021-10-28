@@ -11,9 +11,6 @@ alias -g G='| grep' # now you can do: ls foo G something
 
 alias -g be='bundle exec' #shorter, or see prezto/modules/ruby
 
-alias -g cat='bat'
-alias -g cat='bat'
-
 alias find='\find'
 alias rake='noglob rake'
 alias rsync='\rsync'
