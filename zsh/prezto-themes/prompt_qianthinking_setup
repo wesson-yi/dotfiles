@@ -105,7 +105,7 @@ function prompt_qianthinking_precmd {
 function prompt_qianthinking_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
-  prompt_opts=(cr percent subst)
+  prompt_opts=(cr percent sp subst)
 
   autoload -Uz add-zsh-hook
 
