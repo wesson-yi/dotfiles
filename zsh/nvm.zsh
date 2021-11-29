@@ -23,13 +23,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     nvm use 2> /dev/null 1>&2 || true
 
     # Do not reload nvm again
-    export NVM_LOADED=1
+    export NEW_NVM_LOADED=1 #don't use NVM_LOADED to avoid unexpected change in tmux
   }
   for cmd in "${NODE_GLOBALS[@]}"; do
     # Skip defining the function if the binary is already in the PATH
     #if ! which ${cmd} &>/dev/null; then
     # skip if had beed aliased
-    alias $cmd 2>/dev/null >/dev/null || eval "${cmd}() { unset -f ${cmd} &>/dev/null; [ -z \${NVM_LOADED+x} ] && load_nvm; ${cmd} \$@; }"
+    alias $cmd 2>/dev/null >/dev/null || eval "${cmd}() { unset -f ${cmd} &>/dev/null; [ -z \${NEW_NVM_LOADED+x} ] && load_nvm; ${cmd} \$@; }"
     #fi
   done
 fi
