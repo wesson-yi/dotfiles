@@ -8,7 +8,7 @@ let g:coc_global_extensions = [
   \ 'coc-highlight',
   \ 'coc-imselect',
   \ 'coc-snippets',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-git',
   \ 'coc-prettier',
   \ 'coc-yaml',
