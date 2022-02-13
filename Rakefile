@@ -40,8 +40,7 @@ task :install => [:submodule_init, :submodules] do
   run_bundle_config
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
-    run %{ mkdir -p ~/.config && ln -nfs #{ENV["PWD"]}/vim/nvim ~/.config/ && ln -nfs #{ENV["PWD"]}/vimrc ~/.config/nvim/init.vim}
-    run %{ mkdir -p ~/.config/nvim/autoload && ln -nfs #{ENV["PWD"]}/vim/autoload/plug.vim ~/.config/nvim/autoload/ }
+    run %{ mkdir -p ~/.config && ln -nfs #{ENV["PWD"]}/vim/nvim ~/.config/}
     Rake::Task["install_plug"].execute
     #has_ycm = File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
     #Rake::Task["compile_ycm"].execute unless has_ycm
