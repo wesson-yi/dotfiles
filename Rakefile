@@ -71,7 +71,7 @@ task :update do
   system "test -d $HOME/.zprezto/contrib || (cd $HOME/.zprezto && git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib)"
 
   puts "update Prezto ..........."
-  system "test -d $HOME/.zprezto && cd $HOME/.zprezto && git pull && git submodule update --init --recursive"
+  system "test -d $HOME/.zprezto && cd $HOME/.zprezto && git co master && git pull && git submodule update --init --recursive"
 
 
   puts "update Vim-Plug packages ..........."
