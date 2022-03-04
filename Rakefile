@@ -40,6 +40,11 @@ task :install => [:submodule_init, :submodules] do
   run_bundle_config
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
+    has_nvim = File.exists?(File.join(ENV['HOME'], ".config", 'nvim'))
+    if has_nvim
+      run %{mv ~/.config/nvim ~/.config/nvim.#{Time.now.to_i}}
+      puts "Your nvim config was moved to ~/.config/nvim.#{Time.now.to_i}"
+    end
     run %{ mkdir -p ~/.config && ln -nfs #{ENV["PWD"]}/vim/nvim ~/.config/}
     Rake::Task["install_plug"].execute
     #has_ycm = File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
