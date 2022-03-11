@@ -1,6 +1,6 @@
-if [ -d "/usr/local/opt/coreutils/libexec/gnubin" ]
+GNU_PACKAGE_PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
+if [ -d "$GNU_PACKAGE_PATH" ]
 then
-  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="$GNU_PACKAGE_PATH:$PATH"
   alias ls='ls --color=auto'
-else
 fi

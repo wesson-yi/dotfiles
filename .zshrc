@@ -26,6 +26,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# put after prezto
+if [[ $(uname -m) == "arm64" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # Customize to your needs...
 for config_file ($HOME/.yadr/zsh/*.zsh) profile_script_start "$config_file" && source $config_file
 profile_script_start "completion path"
