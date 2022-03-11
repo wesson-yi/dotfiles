@@ -3,7 +3,6 @@
 #export PROMPT_RUBY_INFO=true
 #export PROMPT_NODE_INFO=true
 #export ENABLE_PYENV=true
-
 if [ "$ENABLE_PYENV" = true ]; then
   profile_script_start "pyenv"
   if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -24,11 +23,6 @@ profile_script_start "java"
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
 export PATH=$JAVA_HOME/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH
 
-alias python=python3
-alias pip=pip3
-
-test -d "/usr/local/opt/openssl@1.1" && export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
-export CC='ccache gcc'
-export CXX='ccache g++'
+test -d "$HOMEBREW_PREFIX/opt/openssl@1.1" && export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@1.1"
 export CC='ccache gcc'
 export CXX='ccache g++'
