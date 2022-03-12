@@ -13,11 +13,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     for cmd in "${NODE_GLOBALS[@]}"; do unset -f ${cmd} &>/dev/null; done
 
     # Load NVM
-    if [[ -s "${NVM_DIR}/nvm.sh" ]]; then
-      source "${NVM_DIR}/nvm.sh"
-    elif [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
-      source "/usr/local/opt/nvm/nvm.sh"
-    fi
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
     # (Optional) Set the version of node to use from ~/.nvmrc if available
     nvm use 2> /dev/null 1>&2 || true

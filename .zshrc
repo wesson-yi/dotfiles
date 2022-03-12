@@ -9,12 +9,12 @@ PROFILING_ZSH_START=false
 
 profile_script_start() {
   if [ "$PROFILING_ZSH_START" = true ]; then
-    gdate "+%T.%3N start $1"
+    date "+%T.%3N start $1"
   fi
 }
 profile_script_end() {
   if [ "$PROFILING_ZSH_START" = true ]; then
-    gdate "+%T.%3N end $1"
+    date "+%T.%3N end $1"
   fi
 }
 
@@ -27,6 +27,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # put after prezto
+profile_script_start "brew init"
 if [[ $(uname -m) == "arm64" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
