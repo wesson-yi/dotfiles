@@ -20,22 +20,25 @@ profile_script_end() {
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
+# put after prezto
+profile_script_start "brew init"
+# better performance than 'brew --prefix'
+if [[ $(uname -m) == "arm64" ]]; then
+  BREW_PREFIX="/opt/homebrew"
+  fpath=($BREW_PREFIX/share/zsh/functions $BREW_PREFIX/share/zsh/site-functions  $fpath)
+else
+  BREW_PREFIX="/usr/local"
+fi
+[ -f $BREW_PREFIX/bin/brew ] && eval "$($BREW_PREFIX/bin/brew shellenv)"
+
+profile_script_start "Prezto init"
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   profile_script_start "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# put after prezto
-profile_script_start "brew init"
-# better performance than 'brew --prefix'
-if [[ $(uname -m) == "arm64" ]]; then
-  HOMEBREW_PREFIX="/opt/homebrew"
-else
-  HOMEBREW_PREFIX="/usr/local"
-fi
-[ -f $HOMEBREW_PREFIX/bin/brew ] && eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-
+profile_script_start "customize init"
 # Customize to your needs...
 for config_file ($HOME/.yadr/zsh/*.zsh) profile_script_start "$config_file" && source $config_file
 profile_script_start "completion path"
