@@ -201,7 +201,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh git hub tmux reattach-to-user-namespace the_silver_searcher ghi coreutils jq tree fzf jsonlint neovim tldr ripgrep bat fd exa global git-delta dust duf glances ccache autoconf automake libtool}
+  run %{brew install curl zsh git hub tmux reattach-to-user-namespace the_silver_searcher ghi coreutils jq tree fzf jsonlint neovim tldr ripgrep bat fd exa global git-delta dust duf glances ccache autoconf automake libtool}
   run %{brew install --HEAD universal-ctags/universal-ctags/universal-ctags}
   #run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   run %{$(brew --prefix)/opt/fzf/install}
@@ -222,7 +222,7 @@ def install_ubuntu
   puts "======================================================"
   puts "Installing packages...There may be some warnings."
   puts "======================================================"
-  run %{sudo apt install -y zsh git tmux silversearcher-ag coreutils jq tree jsonlint neovim tldr bat global ccache}
+  run %{sudo apt install -y curl zsh git tmux silversearcher-ag coreutils jq tree jsonlint neovim tldr bat global ccache}
   puts
   puts
 end
