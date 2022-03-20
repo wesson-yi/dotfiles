@@ -331,7 +331,7 @@ def install_prezto
     puts "Setting zsh as your default shell"
     zsh_path = "#{ENV["HOMEBREW_PREFIX"]}/bin/zsh"
     if File.exists?(zsh_path)
-      if File.readlines("/private/etc/shells").grep(zsh_path).empty?
+      if File.exists?("/private/etc/shells") && File.readlines("/private/etc/shells").grep(zsh_path).empty?
         puts "Adding zsh to standard shell list"
         run %{ echo "#{zsh_path}" | sudo tee -a /private/etc/shells }
       end
