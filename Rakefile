@@ -17,6 +17,8 @@ task :install => [:submodule_init, :submodules] do
     install_homebrew
   elsif check_os('ubuntu')
     install_ubuntu
+  elsif check_os('centos')
+    install_ubuntu
   end
   #install_rvm_binstubs
 
@@ -226,6 +228,24 @@ def install_ubuntu
   puts
   puts
 end
+
+def install_centos
+  puts
+  puts
+  puts "======================================================"
+  puts "Updating"
+  puts "======================================================"
+  run %{sudo apt update}
+  puts
+  puts
+  puts "======================================================"
+  puts "Installing packages...There may be some warnings."
+  puts "======================================================"
+  run %{sudo yum install -y curl zsh git tmux the_silver_searcher coreutils jq tree neovim tldr global ccache}
+  puts
+  puts
+end
+
 
 def install_fonts
   puts "======================================================"
