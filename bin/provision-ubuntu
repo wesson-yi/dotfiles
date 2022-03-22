@@ -1,0 +1,44 @@
+#!/bin/bash
+usage() { echo "Usage: $0 -u <user> -k <key_file>" 1>&2; exit 1; }
+
+while getopts ":u:k:" o; do
+  case "${o}" in
+    u)
+      NEW_USER=${OPTARG}
+      ;;
+    k)
+      KEY_FILE=${OPTARG}
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+if [ -z "${NEW_USER}" ] || [ -z "${KEY_FILE}" ] ; then
+  usage
+fi
+USER_PUBKEY=/tmp/$NEW_USER.pub
+cp $KEY_FILE $USER_PUBKEY
+apt update
+apt install -y git zsh curl wget sudo
+# install neovim
+apt install -y software-properties-common
+add-apt-repository ppa:neovim-ppa/stable
+apt update
+apt install -y neovim
+# install tmux 3.2a
+apt install -y libevent-dev ncurses-dev build-essential bison pkg-config
+curl -Lo /tmp/tmux.tar.gz https://github.com/tmux/tmux/releases/download/3.2a/tmux-3.2a.tar.gz
+tar xzf /tmp/tmux.tar.gz -C /tmp
+cd /tmp/tmux-3.2a
+./configure && make
+sudo make install
+grep $NEW_USER /etc/passwd 2>/dev/null || useradd -m -s /bin/zsh $NEW_USER
+grep $NEW_USER /etc/sudoers 2>/dev/null || echo "$NEW_USER ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo -i -u $NEW_USER bash << EOF
+  mkdir -p ~/.ssh && chmod 700 ~/.ssh
+  cat $USER_PUBKEY >> ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+EOF
+groupadd docker
+usermod -aG docker $NEW_USER

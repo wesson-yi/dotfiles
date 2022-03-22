@@ -5,9 +5,11 @@
      _____| / ___ ( (_| | |
     (_______\_____|\____|_|
 
-    # Yet Another Dotfile Repo v1.1
+    # Yet Another Dotfile Repo v1.2
     # Now with Prezto and Vundle!
 
+
+    # see bin/provision-(ubuntu|centos) for linux provision
     bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`"
 [![Join the chat at https://gitter.im/skwp/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/skwp/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
