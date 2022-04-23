@@ -131,4 +131,5 @@ if ! has('gui_running')
   augroup END
 endif
 
+set undofile
 let g:snipMate = { 'snippet_version' : 1 }
