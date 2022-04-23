@@ -12,6 +12,7 @@ let g:coc_global_extensions = [
   \ 'coc-git',
   \ 'coc-prettier',
   \ 'coc-yaml',
+  \ 'coc-solargraph',
   \ 'coc-ember'
 \ ]
 "\ 'coc-tabnine',
