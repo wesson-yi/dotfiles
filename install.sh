@@ -8,6 +8,7 @@ if [ ! -d "$HOME/.yadr" ]; then
       else
         echo "Unsupported PKG Manger, you need install: zsh git curl vim exuberant-ctags tmux the_silver_searcher/silversearcher-ag jq fontconfig"
       fi
+      git clone https://github.com/asdf-vm/asdf.git ~/.asdf
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Will install dependencies via Homebrew"
     else

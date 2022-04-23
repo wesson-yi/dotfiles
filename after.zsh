@@ -24,5 +24,6 @@ export JAVA_HOME=$(/usr/libexec/java_home -v1.17)
 export PATH=$HOMEBREW_PREFIX/opt/libpq/bin:$JAVA_HOME/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH
 
 test -d "$HOMEBREW_PREFIX/opt/openssl@1.1" && export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$HOMEBREW_PREFIX/opt/openssl@1.1"
+profile_script_start "end"
 export CC='ccache gcc'
 export CXX='ccache g++'
