@@ -12,9 +12,9 @@ let g:coc_global_extensions = [
   \ 'coc-git',
   \ 'coc-prettier',
   \ 'coc-yaml',
-  \ 'coc-tabnine',
   \ 'coc-ember'
 \ ]
+"\ 'coc-tabnine',
 
 " Give more space for displaying messages.
 set cmdheight=2
