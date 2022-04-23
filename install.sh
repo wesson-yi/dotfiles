@@ -4,7 +4,7 @@ if [ ! -d "$HOME/.yadr" ]; then
         sudo yum remove the-silver-searcher
         sudo yum install -y zsh git curl rake vim ctags tmux the_silver_searcher jq fontconfig
       elif [ -n "$(command -v apt-get)" ]; then
-        sudo apt-get install -y zsh git curl rake vim exuberant-ctags tmux silversearcher-ag jq fontconfig
+        sudo apt-get install -y zsh git curl rake vim exuberant-ctags tmux silversearcher-ag jq fontconfig #gpg gawk dirmngr
       else
         echo "Unsupported PKG Manger, you need install: zsh git curl vim exuberant-ctags tmux the_silver_searcher/silversearcher-ag jq fontconfig"
       fi
