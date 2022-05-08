@@ -3,12 +3,20 @@ if [ ! -d "$HOME/.yadr" ]; then
       if [ -n "$(command -v yum)" ]; then
         sudo yum remove the-silver-searcher
         sudo yum install -y zsh git curl rake vim ctags tmux the_silver_searcher jq fontconfig
+        if [ -n "$(command -v dnf)" ]; then
+          sudo dnf install git-delta
+        fi
       elif [ -n "$(command -v apt-get)" ]; then
         sudo apt-get install -y zsh git curl rake vim exuberant-ctags tmux silversearcher-ag jq fontconfig #gpg gawk dirmngr
+        if [ -n "$(command -v dpkg)" ]; then
+          wget https://github.com/dandavison/delta/releases/download/0.12.1/git-delta_0.12.1_amd64.deb -O git-delta.deb
+          sudo dpkg -i git-delta.deb
+        fi
       else
         echo "Unsupported PKG Manger, you need install: zsh git curl vim exuberant-ctags tmux the_silver_searcher/silversearcher-ag jq fontconfig"
       fi
       git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Will install dependencies via Homebrew"
     else
