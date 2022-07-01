@@ -50,3 +50,4 @@ Session.vim
 .powenv
 public/api-docs.json
 public/api/
+.icloud
