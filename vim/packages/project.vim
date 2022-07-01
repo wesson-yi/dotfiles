@@ -17,5 +17,6 @@ Plug 'JazzCore/ctrlp-cmatcher'
 "Plug '/usr/local/opt/fzf'
 "Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'untitled-ai/jupyter_ascending.vim'
 
 
