@@ -9,6 +9,7 @@ let g:coc_global_extensions = [
   \ 'coc-imselect',
   \ 'coc-snippets',
   \ 'coc-pyright',
+  \ 'coc-pairs',
   \ 'coc-git',
   \ 'coc-prettier',
   \ 'coc-yaml',

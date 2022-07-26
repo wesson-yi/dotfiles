@@ -1,7 +1,7 @@
 "Plug "othree/yajs.vim"
 Plug 'w0rp/ale'
 "Plug 'sheerun/vim-polyglot'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
 "Completion for c, cpp, python, need compile with clang
 "I put it into vim/.vundles.local due to it is too heavy.
 "Plug 'Valloric/YouCompleteMe'
