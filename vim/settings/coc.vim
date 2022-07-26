@@ -2,6 +2,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-tslint-plugin',
   \ 'coc-css',
+  \ 'coc-sh',
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-vimlsp',

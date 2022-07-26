@@ -52,7 +52,6 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 "use coc.vim eslint
-au FileType typescript :ALEDisable
 au FileType javascript,typescript setlocal ts=2 sts=2 sw=2
 
 au FileType ruby,eruby setlocal ts=2 sts=2 sw=2
