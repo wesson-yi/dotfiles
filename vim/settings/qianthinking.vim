@@ -35,6 +35,7 @@ au BufNewFile,BufRead *.mxml set filetype=mxml
 au BufNewFile,BufRead *.jsp set filetype=java
 au BufNewFile,BufRead *.es6 set filetype=javascript
 au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.json set filetype=jsonc
 au BufNewFile,BufRead {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 au BufNewFile,BufRead *.gradle set filetype=groovy
 au BufNewFile,BufRead helmfile.yaml,*.gotmpl set ft=helm
@@ -47,9 +48,6 @@ au BufReadPost *
             \ endif
 au FileType python let python_highlight_all=1
 au FileType python setlocal omnifunc=pythoncomplete#Complete
-
-" support jsonc - json with comment
-autocmd FileType json syntax match Comment +\/\/.\+$+
 
 "use coc.vim eslint
 au FileType javascript,typescript setlocal ts=2 sts=2 sw=2
