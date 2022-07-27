@@ -17,9 +17,9 @@ Plug 'tpope/vim-abolish'
 "Plug 'tpope/vim-endwise'
 
 "Plug 'tpope/vim-ragtag'
-"Plug 'tpope/vim-repeat'
-"Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 "Plug 'vim-scripts/AnsiEsc.vim'
 Plug 'ludovicchabant/vim-gutentags'
