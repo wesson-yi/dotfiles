@@ -40,3 +40,5 @@ Plug 'dhruvasagar/vim-prosession'
 "Plug 'janko-m/vim-test'
 Plug 'ybian/smartim'
 Plug 'ojroques/vim-oscyank'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
