@@ -41,4 +41,4 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'ybian/smartim'
 Plug 'ojroques/vim-oscyank'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+Plug 'mtdl9/vim-log-highlighting'
