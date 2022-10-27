@@ -35,6 +35,25 @@ alias vkl='cd ~/Webs/vcooline'
 alias vcl='cd ~/Webs/vcooline'
 alias mkj='cd ~/Webs/maikeji'
 alias work='cd ~/Webs/workspace'
+alias feedmob='cd ~/Webs/feedmob'
+alias feed='cd ~/Webs/feedmob'
+alias hearing='cd ~/Webs/hearing'
+
+alias stage='ssh deploy@$(basename `pwd`)'
+alias gpp='git push origin $(git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //") -u'
+alias gll='git pull'
+alias gllr='git pull --rebase'
+
+alias togit='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)'
+alias togit='chrome-cli open $(git remote get-url origin)'
+alias toactions='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)/actions'
+alias topulls='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)/pulls'
+alias totime='chrome-cli open "https://time-off.feedmob.com/journals/new?date=$(date +%Y-%m-%d)"'
+
+function tocode () { chrome-cli open "https://github.com/feed-mob/$(basename `pwd`)/blob/master/$1#L$2" }
+function topull () { chrome-cli open "https://github.com/feed-mob/$(basename `pwd`)/pull/$1" }
+function fb () { chrome-cli open "https://github.com/feed-mob/$1" }
+function feature () { git checkout -b feature/$1 }
 
 # PS
 alias psa="ps aux"
@@ -101,7 +120,7 @@ alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
 alias gi='vim .gitignore'
-alias gcm='git ci -m'
+# alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
 alias gco='git co'
@@ -153,6 +172,7 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gcm='git co master'
 
 # use https://github.com/seveas/git-spindle
 glabm(){ noglob git lab merge-request "$(git-branch-current 2> /dev/null)":$1 }
@@ -172,6 +192,16 @@ alias gz='tar -zcvf'
 alias c='rails c' # Rails 3
 alias co='script/console' # Rails 2
 alias cod='script/console --debugger'
+alias rspec='bundle exec rspec'
+alias cap='bundle exec cap'
+alias rake='bundle exec rake'
+alias brails='bundle exec rails'
+alias cucumber='bundle exec cucumber'
+
+alias ks='tmux kill-session -t $(tmux display-message -p "#S")'
+alias km='tmux kill-session -t $(tmux display-message -p "#S")'
+alias kss='tmux kill-session -t $(tmux display-message -p "#S"); exit'
+alias kmm='tmux kill-session -t $(tmux display-message -p "#S"); exit'
 
 #If you want your thin to listen on a port for local VM development
 #export VM_IP=10.0.0.1 <-- your vm ip
