@@ -58,3 +58,7 @@ _darcs
 # rvm gemset 环境转换文件
 .ruby-gemset
 .ruby-version*
+
+# feedmob 配置文件
+config/feedmob_apps_mapping.json
+config/apple_credentials.json
