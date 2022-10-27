@@ -5,10 +5,12 @@
      _____| / ___ ( (_| | |
     (_______\_____|\____|_|
 
-    # Yet Another Dotfile Repo v1.1
+    # Yet Another Dotfile Repo v1.2
     # Now with Prezto and Vundle!
 
-    bash -c "\`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh\`"
+
+    # see bin/provision-(ubuntu|centos) for linux provision
+    bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`"
 [![Join the chat at https://gitter.im/skwp/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/skwp/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
@@ -51,12 +53,14 @@ about each one, use:
 bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`" -s ask
 ```
 
+# NOTE: Some items below about Vim are outdated, use Neovim+coc.vim now
+
 ## Wait, you're not done! Do this:
 
 #### Install iTerm Solarized Colors
 YADR will install Solarized colorschemes into your iTerm. Go to Profiles => Colors => Load Presets to pick Solarized Dark.
 
-#### Remap caps-lock to escape with [Seil](https://pqrs.org/osx/karabiner/seil.html.en)
+#### Remap caps-lock to escape with [Karabiner-Elements](https://pqrs.org/osx/karabiner/index.html)
 The escape key is the single most used key in vim.  Old keyboards used to have Escape where Tab is today. Apple keyboards are the worst with their tiny Esc keys. But all this is fixed by remapping Caps to Escape.  If you're hitting a small target in the corner, you are slowing yourself down considerably, and probably damaging your hands with repetitive strain injuries.
 
 #### Set up a system wide hotkey for iTerm (Keys=>Hotkey)
@@ -161,7 +165,6 @@ also an included Ctrl-R reverse history search feature in editrc, very useful in
 
 We include the `ghi` command. Try `ghi list` and have fun managing issues from command line!
 
-
 ## Vim - What's included?
 
  * [Navigation - NERDTree, EasyMotion, CtrlP and more](doc/vim/navigation.md)
@@ -204,10 +207,11 @@ of plugins above to learn more.
  * `s` + one letter - EasyMotion search bidirectional letters
  * `/` - EasyMotion search with `Tab`/`S-Tab` to scroll and `Enter` to select
  * `,mc` - mark this word for MultiCursor (like sublime). Use `Ctrl-n` (next), `Ctrl-p` (prev), `Ctrl-x`(skip) to add more cursors, then do normal vim things like edit the word.
- * `gK` - Opens the documentation for the word under the cursor.
+ * `gK` - Opens the documentation in Dash for the word under the cursor.
+ * `gD` - Opens the documentation in code for the word under the cursor.
  * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
  * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
- 
+
 
 #### File Navigation
 
@@ -321,21 +325,6 @@ These hacks are Lion-centric. May not work for other OS'es. My favorite mods inc
   * No disk image verification (downloaded files open quicker)
   * Display the ~/Library folder in finder (hidden in Lion)
 
-### Macvim troubles with Lua?
-```
-brew uninstall macvim
-brew remove macvim
-brew cleanup
-brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
-```
-
-### Terminal Vim troubles with Lua?
-Installing terminal vim (with lua) with an RVM managed Ruby can cause the neocomplete plugin to segfault. Try uninstalling vim, then installing with system ruby:
-
-```
-brew uninstall vim
-rvm system do brew install vim --with-lua
-```
 
 ### [Pry](https://pryrepl.org/)
 

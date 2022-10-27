@@ -20,19 +20,22 @@ endif
 
 " copy to attached terminal using the yank(1) script:
 " https://github.com/sunaku/home/blob/master/bin/yank
-noremap <silent> <leader>y y:call system('yank', @0)<Return>
+noremap <silent> <leader>y y:OSCYank<Return>
 
 set mouse=nv "Enable mouse use in all modes
 set ttyfast "Send more characters for redraws
-set ttymouse=xterm2
+if has('nvim')
+else
+  set ttymouse=xterm2
+endif
 
 " complete
 set completeopt=menu,menuone,preview
 "set completeopt=menuone,menu,longest,preview
 
 set pastetoggle=<F7>
-set tags=.tags;
-map <F10> :!ctags -R --fields=+iaS --extra=+q -f .tags .<CR>
+set tags=./.tags;,.tags
+map <F10> :!ctags -R --fields=+iaS --output-format=e-ctags --extras=+q -f .tags .<CR>
 
 let g:used_javascript_libs = 'jquery'
 
@@ -40,8 +43,10 @@ au BufNewFile,BufRead *.mxml set filetype=mxml
 au BufNewFile,BufRead *.jsp set filetype=java
 au BufNewFile,BufRead *.es6 set filetype=javascript
 au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.json set filetype=jsonc
 au BufNewFile,BufRead {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
 au BufNewFile,BufRead *.gradle set filetype=groovy
+au BufNewFile,BufRead helmfile.yaml,*.gotmpl set ft=helm
 
 au FileType text setlocal textwidth=80
 " return previous editing position
@@ -52,7 +57,8 @@ au BufReadPost *
 au FileType python let python_highlight_all=1
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 
-au FileType javascript setlocal ts=2 sts=2 sw=2
+"use coc.vim eslint
+au FileType javascript,typescript setlocal ts=2 sts=2 sw=2
 
 au FileType ruby,eruby setlocal ts=2 sts=2 sw=2
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
@@ -80,7 +86,7 @@ au FileType actionscript setlocal dictionary=dict/actionscript.dict
 au FileType gradle setlocal ts=2 sts=2 sw=2
 
 " Source the vimrc file after saving it
-au bufwritepost .vimrc source ~/.vimrc
+"au bufwritepost .vimrc source ~/.vimrc
 
 "CoffeeScript
 "Rails comfile CoffeeScript auto
@@ -119,8 +125,12 @@ highlight nonascii guibg=Red ctermbg=2
 " let g:indentLine_enabled = 0
 let g:indentLine_enabled = 1
 
-nnoremap  <silent> <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+"Exclude quickfix buffer from `:bnext` `:bprevious`
+"https://stackoverflow.com/questions/28613190/exclude-quickfix-buffer-from-bnext-bprevious
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
 
  " leave insert mode quickly
 if ! has('gui_running')
@@ -131,3 +141,6 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
+
+set undofile
+let g:snipMate = { 'snippet_version' : 1 }

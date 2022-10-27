@@ -1,0 +1,27 @@
+{
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.timeout": 500,
+  "suggest.noselect": false,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.detailField":"abbr",
+  "suggest.enablePreview": false,
+  "suggest.snippetIndicator": "🌟",
+  "suggest.triggerCompletionWait": 50,
+  "coc.preferences.formatOnType": false,
+  "codeLens.enable": false,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.virtualText": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  },
+  "prettier.disableSuccessMessage": true,
+  "git.enableGutters": true,
+  "java.errors.incompleteClasspath.severity": "ignore"
+}

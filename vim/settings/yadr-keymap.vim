@@ -10,7 +10,7 @@ nnoremap ,yw yiww
 
 " ,ow = 'overwrite word', replace a word with what's in the yank buffer
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap ,ow "_diwhp
+nnoremap ,ow "_diwP
 
 "make Y consistent with C and D
 nnoremap Y y$
@@ -58,9 +58,7 @@ vmap ,{ c{<C-R>"}<ESC>
 
 map ,` ysiw`
 
-" gary bernhardt's hashrocket
-imap <c-l> <space>=><space>
-
+"
 "Go to last edit location with ,.
 nnoremap ,. '.
 
@@ -89,19 +87,6 @@ cnoremap <C-f> <RIGHT>
 cnoremap <C-h> <BACKSPACE>
 cnoremap <C-d> <DELETE>
 "imap <C-a> <esc>wa
-
-" ============================================================================================================= NERDTree
-" Open the project tree and expose current file in the nerdtree with Ctrl-\
-" calls NERDTreeFind if NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! OpenNerdTree()
-  if &modifiable && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-  else
-    NERDTreeToggle
-  endif
-  setlocal nocursorline
-endfunction
-nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
 
 " =============================================================================================================
 " ,q to toggle quickfix window (where you have stuff like Ag)
@@ -132,11 +117,6 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 " Zoom in
 map <silent> ,gz <C-w>o
 
-" Create window splits easier. The default
-" way is Ctrl-w,v and Ctrl-w,s. I remap
-" this to vv and ss
-nnoremap <silent> <Space>v <C-w>v
-nnoremap <silent> <Space>s <C-w>s
 
 nnoremap < <C-w>5<
 nnoremap > <C-w>5>
@@ -284,3 +264,8 @@ imap <F8> <C-O><F8>
 nnoremap <silent> <C-x> :cn<CR>
 nnoremap <silent> <C-z> :cp<CR>
 
+" gary bernhardt's hashrocket
+inoremap <c-l> <space>=><space>
+cnoremap <c-l> <space>=><space>
+inoremap <c-g> <space>-><space>
+cnoremap <c-g> <space>-><space>

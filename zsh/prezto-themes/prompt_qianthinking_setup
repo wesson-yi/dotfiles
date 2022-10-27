@@ -13,7 +13,74 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #   Yan Pritzker <yan@pritzker.ws>
 
+
+prompt_qianthinking_human_time_to_var() {
+  local human milliseconds=$1 var=$2
+  local decimal=$(( $milliseconds % 1000 ))
+  local total_seconds=$(( $milliseconds / 1000 ))
+  local days=$(( total_seconds / 60 / 60 / 24 ))
+  local hours=$(( total_seconds / 60 / 60 % 24 ))
+  local minutes=$(( total_seconds / 60 % 60 ))
+  local seconds=$(( total_seconds % 60 ))
+  (( days > 0 )) && human+="${days}d "
+  (( hours > 0 )) && human+="${hours}h "
+  (( minutes > 0 )) && human+="${minutes}m "
+  (( decimal < 100 )) && {
+    (( decimal < 10 )) && {
+      decimal="00$decimal"
+    } || {
+      decimal="0$decimal"
+    }
+  }
+  human+="${seconds}.${decimal}s"
+
+  # Store human readable time in a variable as specified by the caller
+  typeset -g "${var}"="${human}"
+}
+
+# Stores (into prompt_qianthinking_cmd_exec_time) the execution
+# time of the last command if set threshold was exceeded.
+prompt_qianthinking_check_cmd_exec_time() {
+	integer elapsed
+	(( elapsed = (( $(date +%s%N) - ${prompt_qianthinking_cmd_timestamp:-$(date +%s%N)} )) / 1000000 ))
+	typeset -g prompt_qianthinking_cmd_exec_time=
+	(( elapsed > ${PROMPT_CMD_MAX_EXEC_MILLISECONDS:-0} )) && {
+		prompt_qianthinking_human_time_to_var $elapsed "prompt_qianthinking_cmd_exec_time"
+	}
+}
+
+function prompt_qianthinking_preexec {
+	typeset -g prompt_qianthinking_cmd_timestamp=$(date +%s%N)
+}
+
 function prompt_qianthinking_precmd {
+  # Check execution time and store it in a variable.
+	prompt_qianthinking_check_cmd_exec_time
+
+
+  typeset -g k8s_prompt=''
+  if [ ! -z "$K8S_CONTEXT" ]
+  then
+    local k8s_context_color
+    if [[ "$K8S_CONTEXT" == *"prod"* ]]
+    then
+      k8s_context_color="red"
+    else
+      k8s_context_color="yellow"
+    fi
+    k8s_prompt+="%F{$k8s_context_color}$K8S_CONTEXT%f"
+  fi
+  if [ ! -z "$K8S_NAMESPACE" ]
+  then
+    k8s_prompt+=":%F{blue}$K8S_NAMESPACE%f"
+  fi
+  if [ ! -z "$k8s_prompt" ]
+  then
+    k8s_prompt+=" "
+  fi
+
+	unset prompt_qianthinking_cmd_timestamp
+
   current_time=`date "+%H:%M:%S"`
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -26,61 +93,94 @@ function prompt_qianthinking_precmd {
 
   # Get ruby information
   if (( $+functions[ruby-info] )); then
-    ruby-info
+    [ "$PROMPT_RUBY_INFO" = true ] && ruby-info
   fi
 
   # Get node information
   if (( $+functions[node-info] )); then
-    node-info
+    [ "$PROMPT_NODE_INFO" = true ] && node-info
   fi
 }
 
 function prompt_qianthinking_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
-  prompt_opts=(cr percent subst)
+  prompt_opts=(cr percent sp subst)
 
   autoload -Uz add-zsh-hook
 
-  add-zsh-hook precmd prompt_qianthinking_precmd
+  add-zsh-hook preexec prompt_qianthinking_preexec
+  add-zsh-hook precmd  prompt_qianthinking_precmd
 
   # Use extended color pallete if available.
+  typeset -gA prompt_git_colors
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+    prompt_git_colors=(
+        git:branch    74  # turquoise
+        git:added     220 # lightyellow
+        git:modified  70  # limegreen
+        git:remote    68  # lightblue
+        git:deleted   red
+        git:unmerged  red
+        git:untracked 45  #lightcyan
+        git:action    13  #magenta
+    )
     __PROMPT_QIANTHINKING_COLORS=(
       "%F{74}"  # turquoise
       "%F{130}" # orange
-      "%F{97}" # purple
-      "%F{161}" # hotpink
-      "%F{70}" # limegreen
+      "%F{45}"  #
+      "%F{70}"  # limegreen
+      "%F{77}"  # limegreen
+      "%F{68}"  # lightblue
+      "%F{9}"   # red
+      "%F{97}"  # purple
     )
   else
+    prompt_git_colors=(
+        git:branch    cyan
+        git:added     lightyellow
+        git:modified  limegreen
+        git:remote    lightblue
+        git:deleted   red
+        git:unmerged  red
+        git:untracked lightcyan
+        git:action    magenta
+    )
     __PROMPT_QIANTHINKING_COLORS=(
       "%F{cyan}"
       "%F{yellow}"
-      "%F{magenta}"
-      "%F{red}"
+      "%F{lightcyan}"
+      "%F{lightred}"
       "%F{green}"
+      "%F{lightblue}"
+      "%F{grey}"
+      "%F{red}"
+      "%F{magenta}"
     )
   fi
 
   # git
-  #zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:branch' format "${__PROMPT_QIANTHINKING_COLORS[1]}%b%f"
-  #zstyle ':prezto:module:git:info:remote' format 'remote:%R'
-  zstyle ':prezto:module:git:info:added' format "${__PROMPT_QIANTHINKING_COLORS[5]}●%f"
-  zstyle ':prezto:module:git:info:deleted' format "${__PROMPT_QIANTHINKING_COLORS[2]}●%f"
-  zstyle ':prezto:module:git:info:modified' format "${__PROMPT_QIANTHINKING_COLORS[4]}●%f"
-  zstyle ':prezto:module:git:info:untracked' format "${__PROMPT_QIANTHINKING_COLORS[3]}●%f"
-  zstyle ':prezto:module:git:info:keys' format 'prompt' '(%b%d%a%m%u%c)'
+  # zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:branch' format "%F{$prompt_git_colors[git:branch]}%b%f"
+  zstyle ':prezto:module:git:info:remote' format "%F{246}[%f%F{$prompt_git_colors[git:remote]}%R%f%F{246}]%f"
+  zstyle ':prezto:module:git:info:added' format "%F{$prompt_git_colors[git:added]}●%f"
+  zstyle ':prezto:module:git:info:deleted' format "%F{$prompt_git_colors[git:deleted]}✘%f"
+  zstyle ':prezto:module:git:info:modified' format "%F{$prompt_git_colors[git:modified]}●%f"
+  zstyle ':prezto:module:git:info:untracked' format "%F{$prompt_git_colors[git:untracked]}?%f"
+  zstyle ':prezto:module:git:info:unmerged' format "%F{$prompt_git_colors[git:unmerged]}=%f"
+  zstyle ':prezto:module:git:info:action' format '%F{$prompt_git_colors[git:action]}%s%f'
+  zstyle ':prezto:module:git:info:keys' format \
+    'prompt' '(%b%c %d%a%m%u%U%A%B%s%S)' \
+    'rprompt' '%R'
 
   # ruby info (rvm, rbenv)
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
   # node info (nvm)
   zstyle ':prezto:module:node:info:version' format '[%v]'
-  # NEWLINE=$'\n»%f '
-  # PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[5]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
-  PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"$%(?.%F{norm} .%F{red}(%?%)%F{norm} "
-  RPROMPT='%F{24}${node_info[version]}${ruby_info[version]}[$current_time]'
+
+  NEWLINE=$'\n$k8s_prompt%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}»%f '
+  PROMPT="${__PROMPT_QIANTHINKING_COLORS[8]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[4]}%~%f "'$git_info[prompt]'"%(?.${NEWLINE}.%F{red}(%?%)${NEWLINE}"
+  RPROMPT='%F{130}$prompt_qianthinking_cmd_exec_time%f$git_info[rprompt]%F{246}${node_info[version]}${ruby_info[version]}[$current_time]'
 }
 
 function prompt_awreece_is_ssh {

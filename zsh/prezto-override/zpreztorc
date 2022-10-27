@@ -41,6 +41,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'ssh' \
   'syntax-highlighting' \
+  'alias-tips' \
+  'enhancd' \
   'prompt'
 
 #

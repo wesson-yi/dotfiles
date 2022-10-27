@@ -74,12 +74,23 @@ alias ch='chrome-cli'
 alias df='df -h'
 alias du='du -h -d 2'
 
-if [[ $platform == 'linux' ]]; then
-  alias ll='ls -alh --color=auto'
-  alias ls='ls --color=auto'
-elif [[ $platform == 'darwin' ]]; then
-  alias ll='ls -alGh'
-  alias ls='ls -Gh'
+
+alias ls='ls -h --color=auto'
+if command -v exa >/dev/null 2>&1
+then
+  alias ll='exa -hlg --git --group-directories-first'
+  alias la='exa -hlg --git --group-directories-first -a'
+
+  #override prezto/modules/utility/init.zsh
+  alias lx='ll -sextension'        # Lists sorted by extension (GNU only).
+  alias lk='ll -ssize'        # Lists sorted by size, largest last.
+  alias lt='ll -smodified'        # Lists sorted by date, most recent last.
+  alias lc='lt --time-style=long-iso'         # Lists sorted by date, most recent last, shows change time.
+  alias lu='lc -taccessed'         # Lists sorted by date, most recent last, shows access time.
+  alias sl='ls'            # I often screw this up.
+else
+  alias ll='ls -lhv --group-directories-first --color=auto'
+  alias la='ll -A'
 fi
 
 # show me files matching "ls grep"
@@ -284,8 +295,3 @@ workdone(){
 
 # Homebrew
 alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
-
-# use GNU date
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias date='gdate'
-fi

@@ -17,3 +17,4 @@ vim/session
 bin/subl
 tags
 vim/autoload
+vim/nvim/pack/github/start/copilot.vim

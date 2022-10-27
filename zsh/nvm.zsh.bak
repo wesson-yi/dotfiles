@@ -1,0 +1,32 @@
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+
+  # Skip adding binaries if there is no node version installed yet
+  if [ -d $NVM_DIR/versions/node ]; then
+    NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 \( -type l -o -type f \) -wholename '*/bin/*' | xargs -n1 basename | sort | uniq | grep -v which`)
+  fi
+  NODE_GLOBALS+=("nvm")
+  NODE_GLOBALS+=("nvim")
+
+  load_nvm () {
+    # Unset placeholder functions
+    for cmd in "${NODE_GLOBALS[@]}"; do unset -f ${cmd} &>/dev/null; done
+
+    # Load NVM
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    # (Optional) Set the version of node to use from ~/.nvmrc if available
+    nvm use 2> /dev/null 1>&2 || true
+
+    # Do not reload nvm again
+    export NEW_NVM_LOADED=1 #don't use NVM_LOADED to avoid unexpected change in tmux
+  }
+  for cmd in "${NODE_GLOBALS[@]}"; do
+    # Skip defining the function if the binary is already in the PATH
+    #if ! which ${cmd} &>/dev/null; then
+    # skip if had beed aliased
+    alias $cmd 2>/dev/null >/dev/null || eval "${cmd}() { unset -f ${cmd} &>/dev/null; [ -z \${NEW_NVM_LOADED+x} ] && load_nvm; ${cmd} \$@; }"
+    #fi
+  done
+fi

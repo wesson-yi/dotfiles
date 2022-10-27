@@ -1,6 +1,17 @@
 " DONE: 打开目录并定位当前文件后，再次调用，无法关闭目录，故不再启用此项。已使用自定义函数替代
 " 在目录中定位当前文件（会自动打开目录）
 " nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
+" ==== NERD tree
+" Open the project tree and expose current file in the nerdtree with Ctrl-\
+" " calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
+function! OpenNerdTree()
+  if &modifiable && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+  else
+    NERDTreeToggle
+  endif
+endfunction
+nnoremap <silent> <C-\> :call OpenNerdTree()<CR>
 
 " 简化显示NERDTree，去除顶部的提示信息等
 let NERDTreeMinimalUI = 1

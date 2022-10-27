@@ -152,7 +152,7 @@
   default = upstream
 [core]
   autocrlf = false
-  editor = vim
+  editor = nvim
 	excludesfile = ~/.yadr/git/gitignore
 	whitespace = cr-at-eol
 [advice]
@@ -162,7 +162,7 @@
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
 	algorithm = patience
-	noprefix = true
+	noprefix = false
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
@@ -175,12 +175,43 @@
 [http]
 	postBuffer = 524288000
 	proxy = 127.0.0.1:7890
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
 [https]
 	proxy = 127.0.0.1:7890
 [init]
 	defaultBranch = master
+[pull]
+  rebase = false
+[diff "sopsdiffer"]
+	textconv = sops -d
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    features = side-by-side line-numbers decorations
+    syntax-theme = Dracula
+    plus-style = syntax "#004000"
+    plus-emph-style = syntax "#008000"
+    minus-style = syntax "#3f0001"
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = store

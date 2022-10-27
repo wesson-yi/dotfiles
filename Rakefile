@@ -1,6 +1,10 @@
 require 'rake'
 require 'fileutils'
 
+def check_os(os)
+  system "cat /etc/*release | grep -i #{os.downcase}"
+end
+
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
@@ -9,8 +13,14 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts
 
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
-  install_rvm_binstubs
+  if RUBY_PLATFORM.downcase.include?("darwin")
+    install_homebrew
+  elsif check_os('ubuntu')
+    install_ubuntu
+  elsif check_os('centos')
+    install_ubuntu
+  end
+  #install_rvm_binstubs
 
   # this has all the runcoms from this directory.
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
@@ -32,6 +42,12 @@ task :install => [:submodule_init, :submodules] do
   run_bundle_config
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
+    has_nvim = File.exists?(File.join(ENV['HOME'], ".config", 'nvim'))
+    if has_nvim
+      run %{mv ~/.config/nvim ~/.config/nvim.#{Time.now.to_i}}
+      puts "Your nvim config was moved to ~/.config/nvim.#{Time.now.to_i}"
+    end
+    run %{ mkdir -p ~/.config && ln -nfs #{ENV["PWD"]}/vim/nvim ~/.config/}
     Rake::Task["install_plug"].execute
     #has_ycm = File.exists?(File.join(ENV['HOME'], ".vim", 'bundle', 'YouCompleteMe'))
     #Rake::Task["compile_ycm"].execute unless has_ycm
@@ -55,12 +71,18 @@ task :install_docker_completion do
   end
 end
 
+
 desc 'Updates the installation'
 task :update do
-  Rake::Task["install"].execute
 
-  puts "Install Vim-Plug packages ..........."
-  system "vim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
+  system "test -d $HOME/.zprezto/contrib && (cd $HOME/.zprezto/contrib && git submodule update --remote) || (cd $HOME/.zprezto && git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib)"
+
+  puts "update Prezto ..........."
+  system "test -d $HOME/.zprezto && cd $HOME/.zprezto && git co master && git pull && git submodule update --init --recursive"
+
+
+  puts "update Vim-Plug packages ..........."
+  system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugUpgrade +PlugUpdate +qall"
   run %{
     cd $HOME/.tmux/plugins/tpm
     git pull
@@ -109,7 +131,7 @@ task :install_plug do
     puts "retry #{retry_times} install plug.vim"
   end
   puts "Install Vim-Plug packages ..........."
-  system "vim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall +qall"
+  system "nvim --noplugin -u #{ENV['HOME']}/.vim/plug.vim -N \"+set hidden\" \"+syntax on\" +PlugClean +PlugInstall +qall"
 end
 
 desc "compile YouCompleteMe"
@@ -167,7 +189,7 @@ def install_homebrew
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts "already installed, this will do nothing."
     puts "======================================================"
-    run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
+    run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"}
   end
 
   puts
@@ -181,11 +203,49 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ripgrep ghi coreutils jq tree fzf jsonlint}
-  run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
+  run %{brew install curl zsh git hub tmux reattach-to-user-namespace the_silver_searcher ghi coreutils jq tree fzf jsonlint neovim tldr ripgrep bat fd exa global git-delta dust duf glances ccache autoconf automake libtool gpg gawk}
+  run %{brew install --HEAD universal-ctags/universal-ctags/universal-ctags}
+  #run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
+  run %{$(brew --prefix)/opt/fzf/install}
   puts
   puts
 end
+
+
+def install_ubuntu
+  puts
+  puts
+  puts "======================================================"
+  puts "Updating"
+  puts "======================================================"
+  run %{sudo apt update}
+  puts
+  puts
+  puts "======================================================"
+  puts "Installing packages...There may be some warnings."
+  puts "======================================================"
+  run %{sudo apt install -y curl zsh git tmux silversearcher-ag coreutils jq tree jsonlint neovim tldr bat global ccache}
+  puts
+  puts
+end
+
+def install_centos
+  puts
+  puts
+  puts "======================================================"
+  puts "Updating"
+  puts "======================================================"
+  run %{sudo apt update}
+  puts
+  puts
+  puts "======================================================"
+  puts "Installing packages...There may be some warnings."
+  puts "======================================================"
+  run %{sudo yum install -y curl zsh git tmux the_silver_searcher coreutils jq tree neovim tldr global ccache}
+  puts
+  puts
+end
+
 
 def install_fonts
   puts "======================================================"
@@ -289,16 +349,19 @@ def install_prezto
     puts "Zsh is already configured as your shell of choice. Restart your session to load the new settings"
   else
     puts "Setting zsh as your default shell"
-    if File.exists?("/usr/local/bin/zsh")
-      if File.readlines("/private/etc/shells").grep("/usr/local/bin/zsh").empty?
+    zsh_path = "#{ENV["HOMEBREW_PREFIX"]}/bin/zsh"
+    if File.exists?(zsh_path)
+      if File.exists?("/private/etc/shells") && File.readlines("/private/etc/shells").grep(zsh_path).empty?
         puts "Adding zsh to standard shell list"
-        run %{ echo "/usr/local/bin/zsh" | sudo tee -a /private/etc/shells }
+        run %{ echo "#{zsh_path}" | sudo tee -a /private/etc/shells }
       end
-      run %{ chsh -s /usr/local/bin/zsh }
+      run %{ chsh -s #{zsh_path} }
     else
       run %{ chsh -s /bin/zsh }
     end
   end
+
+  system "test -d $HOME/.zprezto/contrib || (cd $HOME/.zprezto && git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib)"
 end
 
 def install_docker_completion
