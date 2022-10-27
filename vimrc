@@ -122,7 +122,7 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 autocmd BufWritePre * :%s/\s\+$//e
 " tagbar 函数按出现的次序排序，默认按名称排序
