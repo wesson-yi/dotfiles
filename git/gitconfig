@@ -65,7 +65,7 @@
   rc = rebase --continue            # continue rebase
   rs = rebase --skip                # skip rebase
   ra = rebase --abort                # abort rebase
-  
+
   # merge
   ra = merge --abort                # abort rebase
 
@@ -172,3 +172,15 @@
 [user]
 	name = wesson-yi
 	email = wesson_yi@163.com
+[http]
+	postBuffer = 524288000
+	proxy = 127.0.0.1:7890
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[https]
+	proxy = 127.0.0.1:7890
+[init]
+	defaultBranch = master
