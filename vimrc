@@ -81,7 +81,7 @@ set list listchars=tab:\ \ ,trail:·
 
 "set nowrap       "Don't wrap lines
 set wrap       "Default wrap
-let &colorcolumn=join(range(121,999),",")
+let &colorcolumn=join(range(151,999),",")
 
 set linebreak    "Wrap lines at convenient points
 
@@ -122,6 +122,7 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+set clipboard=unnamedplus
 
 autocmd BufWritePre * :%s/\s\+$//e
 " tagbar 函数按出现的次序排序，默认按名称排序
