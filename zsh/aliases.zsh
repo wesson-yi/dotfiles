@@ -20,39 +20,57 @@ alias yup='yadr update-plugins'
 alias yip='yadr init-plugins'
 
 # Direction
-alias web='cd ~/Webs'
-alias webs='cd ~/Webs'
-alias apps='cd ~/Webs'
-alias app='cd ~/Webs'
+alias web='cd ~/Web'
+alias apps='cd ~/Web'
+alias app='cd ~/Web'
 alias .yadr='cd ~/.yadr'
 alias cloud='cd /Users/wesson/Library/Mobile\ Documents/com~apple~CloudDocs/Documents'
-alias rubyscript='cd ~/Webs/workspace/ruby/script'
+alias rubyscript='cd ~/Web/workspace/ruby/script'
 
 
-alias alo='cd ~/Webs/alo7'
-alias alo7='cd ~/Webs/alo7'
-alias vkl='cd ~/Webs/vcooline'
-alias vcl='cd ~/Webs/vcooline'
-alias mkj='cd ~/Webs/maikeji'
-alias work='cd ~/Webs/workspace'
-alias feedmob='cd ~/Webs/feedmob'
-alias feed='cd ~/Webs/feedmob'
-alias hearing='cd ~/Webs/hearing'
+alias alo='cd ~/Web/alo7'
+alias alo7='cd ~/Web/alo7'
+alias vkl='cd ~/Web/vcooline'
+alias vcl='cd ~/Web/vcooline'
+alias mkj='cd ~/Web/maikeji'
+alias work='cd ~/Web/workspace'
+alias feedmob='cd ~/Web/feedmob'
+alias feed='cd ~/Web/feedmob'
+alias hearing='cd ~/Web/hearing'
+alias sjx='cd ~/Web/sijixy'
 
-alias stage='ssh deploy@$(basename `pwd`)'
+alias stage='ssh root@$(basename `pwd`)'
 alias gpp='git push origin $(git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //") -u'
 alias gll='git pull'
 alias gllr='git pull --rebase'
+alias gllrp='git pull --rebase; git push'
+alias g20='git log -20'
 
-alias togit='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)'
-alias togit='chrome-cli open $(git remote get-url origin)'
-alias toactions='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)/actions'
-alias topulls='chrome-cli open https://github.com/feed-mob/$(basename `pwd`)/pulls'
+alias formats='git add .; git commit -m "FormatCode"'
+alias fixs='git add .; git commit -m "FixBug"'
+alias cleans='git add .; git commit -m "CleanCode"'
+alias refactors='git add .; git commit -m "Refactor"'
+alias amends='git add .; git commit --amend --no-edit'
+
+alias format='git commit -m "FormatCode"'
+alias fix='git commit -m "FixBug"'
+alias clean='git commit -m "CleanCode"'
+alias refactor='git commit -m "Refactor"'
+alias amend='git commit --amend --no-edit'
+
+alias coop='cd /Users/wesson/Web/sijixy/coop'
+alias program='cd /Users/wesson/Program'
+
+alias tmx='tmux attach -t'
+
+alias togit='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)'
+alias toactions='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)/actions'
+alias topulls='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)/pulls'
 alias totime='chrome-cli open "https://time-off.feedmob.com/journals/new?date=$(date +%Y-%m-%d)"'
 
-function tocode () { chrome-cli open "https://github.com/feed-mob/$(basename `pwd`)/blob/master/$1#L$2" }
-function topull () { chrome-cli open "https://github.com/feed-mob/$(basename `pwd`)/pull/$1" }
-function fb () { chrome-cli open "https://github.com/feed-mob/$1" }
+function tocode () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/blob/master/$1#L$2" }
+function topull () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/pull/$1" }
+function to () { chrome-cli open "https://github.com/hearing-music/$1" }
 function feature () { git checkout -b feature/$1 }
 
 # PS
