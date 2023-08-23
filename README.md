@@ -8,7 +8,7 @@
     # Yet Another Dotfile Repo v1.1
     # Now with Prezto and Vundle!
 
-    bash -c "\`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh\`"
+    bash -c "\`curl -fsSL https://raw.githubusercontent.com/wesson-yi/dotfiles/master/install.sh`"
 [![Join the chat at https://gitter.im/skwp/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/skwp/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
@@ -41,14 +41,14 @@ Please use GitHub Issues for pull requests or bug reports only.
 To get started please run:
 
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`"
+bash -c "`curl -fsSL https://raw.githubusercontent.com/wesson-yi/dotfiles/master/install.sh`"
 ```
 
 **Note:** YADR will automatically install all of its subcomponents. If you want to be asked
 about each one, use:
 
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/qianthinking/dotfiles/master/install.sh`" -s ask
+bash -c "`curl -fsSL https://raw.githubusercontent.com/wesson-yi/dotfiles/master/install.sh`" -s ask
 ```
 
 ## Wait, you're not done! Do this:
@@ -207,7 +207,7 @@ of plugins above to learn more.
  * `gK` - Opens the documentation for the word under the cursor.
  * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
  * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
- 
+
 
 #### File Navigation
 
