@@ -136,3 +136,6 @@ func! RunCurrentLine()
   let lines = getline('.')
   exec "AsyncRun ".lines
 endfunc
+
+" 禁用警告： The legacy SnipMate parser is deprecated.
+let g:snipMate = { 'snippet_version' : 1 }
