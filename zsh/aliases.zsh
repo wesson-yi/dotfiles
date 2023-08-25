@@ -19,60 +19,6 @@ alias ylv='yadr vim-list-plugin'
 alias yup='yadr update-plugins'
 alias yip='yadr init-plugins'
 
-# Direction
-alias web='cd ~/Web'
-alias apps='cd ~/Web'
-alias app='cd ~/Web'
-alias .yadr='cd ~/.yadr'
-alias cloud='cd /Users/wesson/Library/Mobile\ Documents/com~apple~CloudDocs/Documents'
-alias rubyscript='cd ~/Web/workspace/ruby/script'
-
-
-alias alo='cd ~/Web/alo7'
-alias alo7='cd ~/Web/alo7'
-alias vkl='cd ~/Web/vcooline'
-alias vcl='cd ~/Web/vcooline'
-alias mkj='cd ~/Web/maikeji'
-alias work='cd ~/Web/workspace'
-alias feedmob='cd ~/Web/feedmob'
-alias feed='cd ~/Web/feedmob'
-alias hearing='cd ~/Web/hearing'
-alias sjx='cd ~/Web/sijixy'
-
-alias stage='ssh root@$(basename `pwd`)'
-alias gpp='git push origin $(git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //") -u'
-alias gll='git pull'
-alias gllr='git pull --rebase'
-alias gllrp='git pull --rebase; git push'
-alias g20='git log -20'
-
-alias formats='git add .; git commit -m "FormatCode"'
-alias fixs='git add .; git commit -m "FixBug"'
-alias cleans='git add .; git commit -m "CleanCode"'
-alias refactors='git add .; git commit -m "Refactor"'
-alias amends='git add .; git commit --amend --no-edit'
-
-alias format='git commit -m "FormatCode"'
-alias fix='git commit -m "FixBug"'
-alias clean='git commit -m "CleanCode"'
-alias refactor='git commit -m "Refactor"'
-alias amend='git commit --amend --no-edit'
-
-alias coop='cd /Users/wesson/Web/sijixy/coop'
-alias program='cd /Users/wesson/Program'
-
-alias tmx='tmux attach -t'
-
-alias togit='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)'
-alias toactions='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)/actions'
-alias topulls='chrome-cli open https://github.com/hearing-music/$(basename `pwd`)/pulls'
-alias totime='chrome-cli open "https://time-off.feedmob.com/journals/new?date=$(date +%Y-%m-%d)"'
-
-function tocode () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/blob/master/$1#L$2" }
-function topull () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/pull/$1" }
-function to () { chrome-cli open "https://github.com/hearing-music/$1" }
-function feature () { git checkout -b feature/$1 }
-
 # PS
 alias psa="ps aux"
 alias psg="ps aux | grep "
@@ -82,11 +28,7 @@ alias psr='ps aux | grep ruby'
 alias cdb='cd -'
 alias cls='clear;ls'
 alias clt='clear;lt'
-alias gsl='git stash list'
 alias ut='uptime'
-
-alias chrome='chrome-cli'
-alias ch='chrome-cli'
 
 # Show human friendly numbers and colors
 alias df='df -h'
@@ -190,7 +132,6 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias gcm='git co master'
 
 # use https://github.com/seveas/git-spindle
 glabm(){ noglob git lab merge-request "$(git-branch-current 2> /dev/null)":$1 }
@@ -213,13 +154,7 @@ alias cod='script/console --debugger'
 alias rspec='bundle exec rspec'
 alias cap='bundle exec cap'
 alias rake='bundle exec rake'
-alias brails='bundle exec rails'
 alias cucumber='bundle exec cucumber'
-
-alias ks='tmux kill-session -t $(tmux display-message -p "#S")'
-alias km='tmux kill-session -t $(tmux display-message -p "#S")'
-alias kss='tmux kill-session -t $(tmux display-message -p "#S"); exit'
-alias kmm='tmux kill-session -t $(tmux display-message -p "#S"); exit'
 
 #If you want your thin to listen on a port for local VM development
 #export VM_IP=10.0.0.1 <-- your vm ip
@@ -263,7 +198,6 @@ alias srgm='spring rails g migration'
 alias srdm='spring rake db:migrate'
 alias srdt='spring rake db:migrate'
 alias srdmt='spring rake db:migrate db:test:prepare'
-
 
 # Sprintly - https://github.com/nextbigsoundinc/Sprintly-GitHub
 alias sp='sprintly'
