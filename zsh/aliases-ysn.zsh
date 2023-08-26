@@ -6,6 +6,11 @@ alias .yadr='cd ~/.yadr'
 alias cloud='cd /Users/wesson/Library/Mobile\ Documents/com~apple~CloudDocs/Documents'
 alias rubyscript='cd ~/Web/workspace/ruby/script'
 
+alias cls='clear;ls'
+alias la='ls -alGh'
+alias clt='clear;lt'
+alias ut='uptime'
+
 alias alo='cd ~/Web/alo7'
 alias alo7='cd ~/Web/alo7'
 alias vkl='cd ~/Web/vcooline'
@@ -18,7 +23,6 @@ alias hearing='cd ~/Web/hearing'
 alias sjx='cd ~/Web/sijixy'
 alias coop='cd ~/Web/sijixy/coop'
 alias program='cd ~/Program'
-
 
 alias stage='ssh root@$(basename `pwd`)'
 alias sy2='ssh -J wesson.yi@192.168.31.68 root@192.168.5.2'
