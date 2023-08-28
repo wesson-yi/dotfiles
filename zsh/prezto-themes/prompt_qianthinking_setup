@@ -47,11 +47,11 @@ function prompt_qianthinking_setup {
   # Use extended color pallete if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     __PROMPT_QIANTHINKING_COLORS=(
-      "%F{74}"  # turquoise
-      "%F{130}" # orange
-      "%F{97}" # purple
-      "%F{161}" # hotpink
-      "%F{70}" # limegreen
+      "%F{74}"  # 1. turquoise
+      "%F{130}" # 2. orange
+      "%F{97}"  # 3. purple
+      "%F{161}" # 4. hotpink
+      "%F{70}"  # 5. limegreen
     )
   else
     __PROMPT_QIANTHINKING_COLORS=(
@@ -78,8 +78,12 @@ function prompt_qianthinking_setup {
   # node info (nvm)
   zstyle ':prezto:module:node:info:version' format '[%v]'
   # NEWLINE=$'\n»%f '
+
+  # 提示符 prompt
   # PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"%(?.%F{norm}${__PROMPT_QIANTHINKING_COLORS[5]}${NEWLINE}.%F{red}(%?%)%F{norm}${__PROMPT_QIANTHINKING_COLORS[4]}${NEWLINE}"
   PROMPT="${__PROMPT_QIANTHINKING_COLORS[3]}%n%f@${__PROMPT_QIANTHINKING_COLORS[2]}%m%f ${__PROMPT_QIANTHINKING_COLORS[5]}%~%f "'$git_info[prompt]'"$%(?.%F{norm} .%F{red}(%?%)%F{norm} "
+
+  # 右提示符 r + prompt
   RPROMPT='%F{24}${node_info[version]}${ruby_info[version]}[$current_time]'
 }
 
