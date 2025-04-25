@@ -25,6 +25,8 @@ alias hearing='cd ~/Web/hearing'
 alias sjx='cd ~/Web/sijixy'
 alias sijixy='cd ~/Web/sijixy'
 alias sijixing='cd ~/Web/sijixy'
+alias smb='cd ~/Web/showmebug'
+alias showmebug='cd ~/Web/showmebug'
 
 alias coop='cd ~/Web/sijixy/coop'
 alias coop_local='cd ~/Web/sijixy/coop_local'
@@ -37,7 +39,8 @@ alias backend='cd ~/Web/sijixy/coop_medical_backend'
 alias big_data='cd ~/Web/sijixy/big_data'
 alias program='cd ~/Program'
 
-alias stage='ssh root@$(basename `pwd`)'
+alias stage='ssh deployer@stage_$(basename `pwd`) -p 1022'
+alias prod='ssh deployer@prod_$(basename `pwd`) -p 1022'
 alias sy2='ssh -J wesson.yi@192.168.31.100 root@192.168.5.2'
 alias sy3='ssh -J wesson.yi@192.168.31.100 root@192.168.5.3'
 
@@ -46,13 +49,21 @@ alias sy3='ssh -J wesson.yi@192.168.31.100 root@192.168.5.3'
 
 # Git
 alias gpp='git push origin $(git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //") -u'
+
 alias gll='git pull'
 alias gllr='git pull --rebase'
 alias gllrp='git pull --rebase; git push'
-alias g20='git log -20'
-alias gcm='git co master'
+
+alias grs='git rebase staging'
+alias grm='git rebase staging'
+
 alias gc='git commit'
+alias gcm='git co master'
+alias gcs='git co staging'
+alias gcd='git co develop'
+
 alias gsl='git stash list'
+alias g20='git log -20'
 
 # Git add + commit
 alias formats='git add .; git commit -m "FormatCode"'
@@ -80,6 +91,7 @@ function feature () { git checkout -b feature/$1 }
 
 # Rails
 alias brails='bundle exec rails'
+alias brspec='bundle exec rspec'
 function drails() { docker exec -it coop-web-1 bash -c "cd /data/github/coop && bin/rails $*" }
 function dpumactl() { docker exec -it coop-web-1 bash -c "cd /data/github/coop && /usr/local/ruby-2.2.2/bin/pumactl $*" }
 function drake() { docker exec -it coop-web-1 bash -c "cd /data/github/coop && bin/rake $*" }
@@ -113,6 +125,7 @@ alias ks='tmux kill-session -t $(tmux display-message -p "#S")'
 alias km='tmux kill-session -t $(tmux display-message -p "#S")'
 alias kss='tmux kill-session -t $(tmux display-message -p "#S"); exit'
 alias kmm='tmux kill-session -t $(tmux display-message -p "#S"); exit'
+tmm () { tmux new-session -d\; new-window -d\; new-window -d\; attach\; select-window -t 2\; }
 
 # Chrome-cli
 alias chrome='chrome-cli'
@@ -126,3 +139,19 @@ alias totime='chrome-cli open "https://time-off.feedmob.com/journals/new?date=$(
 function tocode () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/blob/master/$1#L$2" }
 function topull () { chrome-cli open "https://github.com/hearing-music/$(basename `pwd`)/pull/$1" }
 function to () { chrome-cli open "https://github.com/hearing-music/$1" }
+
+function proxy_off() {
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  unset no_proxy
+  echo -e "Proxy Off"
+}
+
+function proxy_on(){
+  export https_proxy=http://127.0.0.1:7890
+  export http_proxy=http://127.0.0.1:7890
+  export all_proxy=socks5://127.0.0.1:7890
+  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+  echo -e "Proxy On"
+}
