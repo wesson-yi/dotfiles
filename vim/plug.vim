@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/bundle')
 source ~/.yadr/vim/packages/ruby.vim
+source ~/.yadr/vim/packages/go.vim
 source ~/.yadr/vim/packages/languages.vim
 source ~/.yadr/vim/packages/git.vim
 source ~/.yadr/vim/packages/appearance.vim

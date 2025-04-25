@@ -124,6 +124,9 @@ set smartcase       " ...unless we type a capital
 so ~/.yadr/vim/settings.vim
 set clipboard=unnamed
 
+" 设置默认忽略文件类型
+let g:NERDTreeIgnore = ['__pycache__', '__init__.py', '__init.py', '.DS_Store']
+
 autocmd BufWritePre * :%s/\s\+$//e
 " tagbar 函数按出现的次序排序，默认按名称排序
 let g:tagbar_sort=0

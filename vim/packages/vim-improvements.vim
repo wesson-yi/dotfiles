@@ -2,17 +2,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 
-" Plug 'Shougo/neocomplete'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" let g:deoplete#enable_at_startup = 1
-
 Plug 'briandoll/change-inside-surroundings.vim'
 "Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'

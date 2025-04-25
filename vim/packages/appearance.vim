@@ -15,3 +15,4 @@ Plug 'jby/tmux.vim'
 
 " Required for Gblame in terminal vim
 Plug 'godlygeek/csapprox'
+Plug 'slim-template/vim-slim'  " 添加 Slim 语法高亮插件
